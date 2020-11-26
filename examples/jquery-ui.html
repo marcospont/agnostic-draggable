@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>jQuery UI Sortable - Portlets</title>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+		<style type="text/css">
+			body {
+				padding: 50px;
+			}
+
+			.scrollable {
+				position: relative;
+				width: 100%;
+				height: 700px;
+				overflow-y: auto;
+				border: 1px solid #000;
+			}
+
+			.container {
+				padding: 20px;
+				height: 1000px;
+			}
+
+			.draggable {
+				display: inline-block;
+				border: 1px solid #000;
+				background-color: #fff;
+				padding: 20px;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+			}
+
+			.droppable {
+				display: block;
+				border: 1px solid #000;
+				background-color: #fff;
+				margin-top: 20px;
+				margin-bottom: 30px;
+				padding: 20px;
+				width: calc(100% - 40px);
+				height: 80px;
+			}
+			.droppable.ui-droppable-active {
+				border-color: blue;
+			}
+			.droppable.ui-droppable-hover {
+				border-color: red;
+			}
+
+			.column {
+				display: inline-block;
+				margin-right: 20px;
+				vertical-align: top;
+			}
+
+			.sortable {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.sortable li {
+				display: block;
+				border: 1px solid #000;
+				background-color: #fff;
+				padding: 10px;
+				width: 200px;
+				height: 20px;
+				cursor: pointer;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	</head>
+	<body>
+		<div class="scrollable">
+			<div class="container">
+				<div id="drag1" class="draggable">
+					<span class="handle">Drag Me!</span>
+				</div>
+				<div id="drag2" class="draggable">
+					<span class="handle">Drag Me!</span>
+				</div>
+				<div id="drag3" class="draggable">
+					<span class="handle">Drag Me!</span>
+				</div>
+				<div id="drag4" class="draggable">
+					<span class="handle">Drag Me!</span>
+				</div>
+				<div id="drag5" class="draggable">
+					<span class="handle">Drag Me!</span>
+				</div>
+				<div id="drop1" class="droppable">Drop Here!</div>
+				<div class="column">
+					<ul class="sortable">
+						<li>
+							<span>Sort Me 1!</span>
+						</li>
+						<li>
+							<span>Sort Me 2!</span>
+						</li>
+						<li>
+							<span>Sort Me 3!</span>
+						</li>
+						<li>
+							<span>Sort Me 4!</span>
+						</li>
+						<li>
+							<span>Sort Me 5!</span>
+						</li>
+						<li>
+							<span>Sort Me 6!</span>
+						</li>
+					</ul>
+				</div>
+				<div class="column">
+					<ul class="sortable">
+						<li>
+							<span>Sort Me 1!</span>
+						</li>
+						<li>
+							<span>Sort Me 2!</span>
+						</li>
+						<li>
+							<span>Sort Me 3!</span>
+						</li>
+						<li>
+							<span>Sort Me 4!</span>
+						</li>
+						<li>
+							<span>Sort Me 5!</span>
+						</li>
+						<li>
+							<span>Sort Me 6!</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$('.draggable').draggable({
+				appendTo: 'body',
+				connectToSortable: '.sortable',
+				containment: 'parent',
+				cursor: 'move',
+				distance: 10,
+				handle: '.handle',
+				helper: 'original',
+				stack: '.draggable'
+			});
+			$('.droppable').droppable();
+			$('.sortable').sortable({
+				connectWith: '.sortable',
+				cursor: 'move',
+				opacity: 0.5,
+				distance: 10,
+				helper: 'clone'
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+parser: babel-eslint
+extends:
+    - standard
+    - prettier
+    - prettier/standard
+plugins:
+    - prettier
+rules:
+	constructor-super: off

@@ -1,0 +1,66 @@
+{
+  "name": "agnostic-draggable",
+  "version": "1.0.0",
+  "description": "An agnostic set of libraries implementing draggable, droppable and sortable behaviours inspired by the jQuery UI implementation",
+  "keywords": [
+    "draggable",
+    "droppable",
+    "sortable",
+    "drag",
+    "drop",
+    "sort",
+    "interact",
+    "mouse",
+    "touch",
+    "agnostic",
+    "javascript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcospont/agnostic-draggable.git"
+  },
+  "author": "Marcos Pont <marcos.pont@gmail.com>",
+  "homepage": "https://github.com/marcospont/agnostic-draggable#readme",
+  "bugs": {
+    "url": "https://github.com/marcospont/agnostic-draggable/issues"
+  },
+  "main": "dist/agnostic-draggable.js",
+  "scripts": {
+    "build": "rollup -c",
+    "develop": "rollup -c -w",
+    "code:format": "prettier --write \"src/**/*.js\"",
+    "code:lint": "eslint \"src/**/*.js\"",
+    "code:fix": "eslint \"src/**/*.js\" --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-array-includes": "^2.0.3",
+    "core-js": "^3.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "prettier": "^2.1.2",
+    "rollup": "^2.33.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "standard-version": "^9.0.0"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "dom-helpers": "^5.2.0",
+    "events": "^3.2.0",
+    "lodash": "^4.17.20"
+  }
+}

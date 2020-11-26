@@ -1,0 +1,7 @@
+arrowParens: avoid
+trailingComma: none
+printWidth: 150
+singleQuote: true
+useTabs: true
+tabWidth: 4
+htmlWhitespaceSensitivity: css
