@@ -6,9 +6,9 @@ Years later, most of the web applications are tied to frameworks or rendering li
 
 However, finding a good replacement for what jQuery UI used to offer in terms of drag/drop capabilities is not easy. If you are looking for a solution that is tied to your framework/library of choice, there are plenty of options for you. But if you are looking for a VanillaJS based and agnostic implementation of drag & drop, you can find yourself browsing for a couple of hours finding just a few consistent options.
 
-[Shopify/Draggable](https://github.com/Shopify/draggable) is a nice alternative, although it has some crucial behavior changes compared with what jQuery UI used to offer. [SortableJS](https://github.com/SortableJS/sortablejs) offers something similar to what the jQuery UI`s Sortable widget offers. By looking at the examples, it seems to be even possible to mimic the behavior of the "connectToSortable" option of jQuery UI's Draggable widget, that allows an item to be dragged onto a list that has sort capabilities. Native Drag & Drop implementation from the browser? Forget it until it can support dragging an element using a cloned helper node. Furthermore, the API offered by the native implementation really sucks.
+[Shopify/Draggable](https://github.com/Shopify/draggable) is a nice alternative, although it has some crucial behaviour changes compared with what jQuery UI used to offer. [SortableJS](https://github.com/SortableJS/sortablejs) offers something similar to what the jQuery UI`s Sortable widget offers. By looking at the examples, it seems to be even possible to mimic the behavior of the "connectToSortable" option of jQuery UI's Draggable widget, that allows an item to be dragged onto a list that has sort capabilities. Native Drag & Drop implementation from the browser? Forget it until it can support dragging an element using a cloned helper node. Furthermore, the API offered by the native implementation really sucks.
 
-The solution? Translate the implementation of the Draggable, Droppable and Sortable widgets from jQuery UI into an agnostic, VanillaJS and ES6 based library. Most of the options and features found in the original widget implementations by jQuery UI's team are here. The ones that were not ported were just not part of the subset of features that I thought to be the most important ones. This doesn't mean that contributors cannot help finishing the taks of bringing them in.
+The solution? Translate the implementation of the Draggable, Droppable and Sortable widgets from jQuery UI into an agnostic, VanillaJS and ES6+ based library. Most of the options and features found in the original implementation by jQuery UI's team are here. The ones that were not translated/rewritten were just not part of the subset of features considered to be the most important ones. This doesn't mean that contributors cannot help finishing the task of bringing them in.
 
 ## Install
 
@@ -24,7 +24,7 @@ npm i agnostic-draggable --save
 
 Enables dragging functionality on any DOM element. Move the Draggable element by clicking on it and dragging it anywhere within the viewport.
 
-Elements modified or created will use the same CSS classes from jQuery UI:
+Elements modified or created will use the same CSS classes inherited from jQuery UI's implementation:
 
 -   ui-draggable: the element being dragged
 -   ui-draggable-handle: the handle of the draggable element. By default, each draggable is also a handle
@@ -32,37 +32,37 @@ Elements modified or created will use the same CSS classes from jQuery UI:
 
 #### Options
 
-|                      Name                       |    Type     |                  Default                  |                               Description                                |
-| :---------------------------------------------: | :---------: | :---------------------------------------: | :----------------------------------------------------------------------: |
-|          **[`appendTo`](#appendTo-1)**          | `{String}`  |                 `parent`                  |                   Where to append the dragging helper.                   |
-|              **[`axis`](#axis-1)**              | `{String}`  |                   null                    |                 Constraint dragging movement to an axis.                 |
-|  **[`connectToSortable`](#connectToSortable)**  | `{String}`  |                   null                    | Allows the Draggable to be dropped onto the specified Sortable elements. |
-|       **[`containment`](#containment-1)**       |  `{String   |                  Array}`                  |                                   null                                   | Constraints dragging movement to an element or region. |
-|            **[`cursor`](#cursor-1)**            | `{String}`  |                   null                    |             Allows changing the cursor style while dragging.             |
-|          **[`disabled`](#disabled-1)**          | `{Boolean}` |                  `false`                  |                 Allows disabling the dragging behaviour.                 |
-|          **[`distance`](#distance-1)**          | `{Number}`  |                    `0`                    |              Distance in pixels before dragging can start.               |
-|              **[`grid`](#grid-1)**              |  `{Array}`  |                   null                    |        Snaps the dragging helper to a grid, every x and y pixels.        |
-|            **[`handle`](#handle-1)**            | `{String}`  |                   null                    |           Dragging only starts if click matches this selector.           |
-|            **[`helper`](#helper-1)**            |  `{String   |                Function}`                 |                                `original`                                | Configures the dragging helper node. |
-|           **[`opacity`](#opacity-1)**           | `{String}`  |                   null                    |               Allows changing the opacity while dragging.                |
-|            **[`revert`](#revert-1)**            |  `{Boolean  |                  String                   |                                Function}`                                | `false` | Whether the element should be reverted after dragging stops. |
-|    **[`revertDuration`](#revertDuration-1)**    | `{Number}`  |                   `200`                   |            Duration in milliseconds of the revert animation.             |
-|             **[`scope`](#scope-1)**             | `{String}`  |                 `default`                 |    Used to group sets of Draggable, Droppable and Sortable elements.     |
-|            **[`scroll`](#scroll-1)**            | `{Boolean}` |                  `true`                   |               Allows auto-scrolling within the container.                |
-| **[`scrollSensitivity`](#scrollSensitivity-1)** | `{Number}`  |                   `20`                    |                      Scroll sensitivity in pixels.                       |
-|       **[`scrollSpeed`](#scrollSpeed-1)**       | `{Number}`  |                   `10`                    |                         Scroll speed in pixels.                          |
-|              **[`skip`](#skip-1)**              | `{String}`  | `input, textarea, button, select, option` |           Prevents dragging when this CSS selector is matched.           |
-|              **[`stack`](#stack)**              | `{String}`  |                   null                    | Manages the z-indexes of Draggable elements matching this CSS selector.  |
-|            **[`zIndex`](#zIndex-1)**            | `{Number}`  |                   null                    |               Allows changing the z-index while dragging.                |
+|                     Name                      |            Type             |                  Default                  |                               Description                                |
+| :-------------------------------------------: | :-------------------------: | :---------------------------------------: | :----------------------------------------------------------------------: |
+|          **[`appendTo`](#appendto)**          |         `{String}`          |                 `parent`                  |                   Where to append the dragging helper.                   |
+|              **[`axis`](#axis)**              |         `{String}`          |                   null                    |                 Constraint dragging movement to an axis.                 |
+| **[`connectToSortable`](#connecttosortable)** |         `{String}`          |                   null                    | Allows the Draggable to be dropped onto the specified Sortable elements. |
+|       **[`containment`](#containment)**       |      `{String,Array}`       |                   null                    |          Constraints dragging movement to an element or region.          |
+|            **[`cursor`](#cursor)**            |         `{String}`          |                   null                    |             Allows changing the cursor style while dragging.             |
+|          **[`disabled`](#disabled)**          |         `{Boolean}`         |                  `false`                  |                 Allows disabling the dragging behaviour.                 |
+|          **[`distance`](#distance)**          |         `{Number}`          |                    `0`                    |              Distance in pixels before dragging can start.               |
+|              **[`grid`](#grid)**              |          `{Array}`          |                   null                    |        Snaps the dragging helper to a grid, every x and y pixels.        |
+|            **[`handle`](#handle)**            |         `{String}`          |                   null                    |           Dragging only starts if click matches this selector.           |
+|            **[`helper`](#helper)**            |     `{String,Function}`     |                `original`                 |                   Configures the dragging helper node.                   |
+|           **[`opacity`](#opacity)**           |         `{Number}`          |                   null                    |               Allows changing the opacity while dragging.                |
+|            **[`revert`](#revert)**            | `{Boolean,String,Function}` |                  `false`                  |       Whether the element should be reverted after dragging stops.       |
+|    **[`revertDuration`](#revertduration)**    |         `{Number}`          |                   `200`                   |            Duration in milliseconds of the revert animation.             |
+|             **[`scope`](#scope)**             |         `{String}`          |                 `default`                 |    Used to group sets of Draggable, Droppable and Sortable elements.     |
+|            **[`scroll`](#scroll)**            |         `{Boolean}`         |                  `true`                   |               Allows auto-scrolling within the container.                |
+| **[`scrollSensitivity`](#scrollsensitivity)** |         `{Number}`          |                   `20`                    |                      Scroll sensitivity in pixels.                       |
+|       **[`scrollSpeed`](#scrollspeed)**       |         `{Number}`          |                   `10`                    |                         Scroll speed in pixels.                          |
+|              **[`skip`](#skip)**              |         `{String}`          | `input, textarea, button, select, option` |           Prevents dragging when this CSS selector is matched.           |
+|             **[`stack`](#stack)**             |         `{String}`          |                   null                    | Manages the z-indexes of Draggable elements matching this CSS selector.  |
+|            **[`zIndex`](#zindex)**            |         `{Number}`          |                   null                    |               Allows changing the z-index while dragging.                |
 
 ### `appendTo`
 
-Type: `String`
-Default: `parent`
-Accepted values: `parent` or a CSS selector
+**Type:** `String`  
+**Default:** `parent`  
+**Accepted values:** `parent` or a CSS selector
 
 Which element the dragging helper should be appended to while dragging.
-Only works when the [`helper`](#helper-1) option is set to not use the original element.
+Only works when the [`helper`](#helper) option is set to not use the original element.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -78,9 +78,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `axis`
 
-Type: `String`
-Default: null
-Accepted values: `x` or `y`
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** `x` or `y`
 
 Constrains dragging to either the horizontal (x) or vertical (y) axis.
 
@@ -98,9 +98,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `connectToSortable`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** a CSS selector
 
 Allows the Draggable to be dropped onto the specified Sortables. If this option is used, a Draggable can be dropped onto a Sortable list and then becomes part of it. Note: The `helper` option must be set to `clone` in order to work flawlessly.
 
@@ -126,9 +126,9 @@ new Sortable(document.querySelector('#sort1'));
 
 ### `containment`
 
-Type: `String|Array`
-Default: null
-Accepted values: `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
+**Type:** `String,Array`  
+**Default:** null  
+**Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
 
 Constrains dragging to within the bounds of the specified element or region.
 
@@ -150,9 +150,9 @@ new Draggable(document.querySelector('#drag2'), {
 
 ### `cursor`
 
-Type: `String`
-Default: null
-Accepted values: any values accepted by the `cursor` CSS property
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** any values accepted by the `cursor` CSS property
 
 Allows changing the cursor style while dragging the element.
 
@@ -170,8 +170,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `disabled`
 
-Type: `Boolean`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 Determines whether the Draggable instance should be disabled.
 
@@ -189,8 +189,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `distance`
 
-Type: `Number`
-Default: `0`
+**Type:** `Number`  
+**Default:** `0`
 
 Distance in pixels that the mouse should move before the dragging should start. Prevents unwanted drags when the Draggable element is clicked.
 
@@ -208,9 +208,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `grid`
 
-Type: `Array`
-Default: null
-Accepted values: an array of 2 numbers in the form `[x, y]`
+**Type:** `Array`  
+**Default:** null  
+**Accepted values:** an array of 2 numbers in the form `[x, y]`
 
 Snaps the dragging helper to a grid, every x and y pixels.
 
@@ -228,9 +228,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `handle`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** a CSS selector
 
 If specified, restricts dragging from starting unless the mousedown occurs on the specified element(s). Only elements that descend from the Draggable element are permitted.
 
@@ -250,9 +250,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `helper`
 
-Type: `String|Function`
-Default: `original`
-Accepted values: `original`, `helper` or a function
+**Type:** `String,Function`  
+**Default:** `original`  
+**Accepted values:** `original`, `helper` or a function
 
 Allows for a helper element to be used for dragging display.
 If set to `clone`, then the element will be cloned and the clone will be dragged.
@@ -271,9 +271,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `opacity`
 
-Type: `Number`
-Default: null
-Accepted values: values accepted by the `opacity` CSS property
+**Type:** `Number`  
+**Default:** null
 
 Allows changing the opacity of the element while being dragged.
 
@@ -291,13 +290,14 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `revert`
 
-Type: `Boolean|String|Function`
-Default: `false`
-Accepted values: `invalid`, `valid`, `true`, `false` or a function
+**Type:** `Boolean,String,Function`  
+**Default:** `false`  
+**Accepted values:** `invalid`, `valid`, `true`, `false` or a function
 
 Whether the element should revert to its start position when dragging stops.
 If set to `true`, the element will always revert.
-If set to `invalid` or `valid` it will respectively revert if dropped on a droppable or not.
+If set to `invalid` or `valid` it will respectively revert if dropped on a Droppable or not.
+If it's a function, it must return `true` to indicate that the element should revert.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -313,8 +313,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `revertDuration`
 
-Type: `Number`
-Default: `200`
+**Type:** `Number`  
+**Default:** `200`
 
 Uses an animation with this specific duration in milliseconds when reverting the element.
 
@@ -333,8 +333,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scope`
 
-Type: `Stringr`
-Default: `default`
+**Type:** `String`  
+**Default:** `default`
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to Droppable's [`accept`](#accept) option. A Draggable with the same scope value as a Droppable will be accepted by it.
 
@@ -352,8 +352,8 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scroll`
 
-Type: `Boolean`
-Default: `true`
+**Type:** `Boolean`  
+**Default:** `true`
 
 If this option is set to `true`, the container of the element will auto-scroll if needed.
 
@@ -371,12 +371,12 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scrollSensitivity`
 
-Type: `Number`
-Default: `20`
+**Type:** `Number`  
+**Default:** `20`
 
 Determines how close to the edge of the viewport the auto-scroll should happen. Distance is realtive to the mouse pointer, not to the dragging element.
 
-> This option is ignored if [`scroll`](#scroll-1) is set to `false`.
+> This option is ignored if [`scroll`](#scroll) is set to `false`.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -393,12 +393,12 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scrollSpeed`
 
-Type: `Number`
-Default: `10`
+**Type:** `Number`  
+**Default:** `10`
 
-The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollSensitivity-1) is met.
+The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollsensitivity) is met.
 
-> This option is ignored if [`scroll`](#scroll-1) is set to `false`.
+> This option is ignored if [`scroll`](#scroll) is set to `false`.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -415,9 +415,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `skip`
 
-Type: `String`
-Default: `input, textarea, button, select, option`
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** `input, textarea, button, select, option`  
+**Accepted values:** a CSS selector
 
 Prevents dragging if the clicked element matches the given CSS selector.
 
@@ -438,9 +438,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `stack`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** a CSS selector
 
 Manages the z-indexes of Draggable elements matching the given CSS selector.
 Brings the currently dragged element to the front compared with other members of the stack.
@@ -463,8 +463,8 @@ new Draggable(document.querySelector('#drag2'), {
 
 ### `zIndex`
 
-Type: `Number`
-Default: null
+**Type:** `Number`  
+**Default:** null
 
 Allows to change the z-index of the element when being dragged.
 
@@ -482,13 +482,13 @@ new Draggable(document.querySelector('#drag1'), {
 
 #### Events
 
-|          Name          |                                     Description                                     |
-| :--------------------: | :---------------------------------------------------------------------------------: |
-|  **`draggable:init`**  |                      Called when the Draggable is initialized.                      |
-|    **`drag:start`**    |             Called when the drag operation is started. Can be canceled.             |
-|    **`drag:move`**     |                 Called while dragging the element. Can be canceled.                 |
-|    **`drag:stop`**     | Called when the drag operation stops. Can be canceled, preventing an unwanted drop. |
-| **`draggable:destry`** |                       Called when the Draggable is destroyed.                       |
+|          Name           |                                     Description                                     |
+| :---------------------: | :---------------------------------------------------------------------------------: |
+|  **`draggable:init`**   |                      Called when the Draggable is initialized.                      |
+|    **`drag:start`**     |             Called when the drag operation is started. Can be canceled.             |
+|     **`drag:move`**     |                 Called while dragging the element. Can be canceled.                 |
+|     **`drag:stop`**     | Called when the drag operation stops. Can be canceled, preventing an unwanted drop. |
+| **`draggable:destroy`** |                       Called when the Draggable is destroyed.                       |
 
 #### Cancelling an event
 
@@ -508,9 +508,9 @@ new Draggable(document.querySelector('#drag1'), null, {
 
 ### Droppable
 
-Transforms elements into droppables or drop zones. This means that elements controlled by a [`Draggable`](#draggable) can be dropped into a droppable if accepted by them.
+Transforms elements into droppables or drop zones. This means that elements controlled by a [`Draggable`](#draggable) can be dropped into a Droppable if accepted by them.
 
-Elements modified or created will use the same CSS classes from jQuery UI:
+Elements modified or created will use the same CSS classes inherited from jQuery UI's implementation:
 
 -   ui-droppable: the droppable element
 -   ui-droppable-active: identifies an active droppable element
@@ -518,22 +518,22 @@ Elements modified or created will use the same CSS classes from jQuery UI:
 
 #### Options
 
-|              Name               |    Type     |   Default   |                            Description                            |
-| :-----------------------------: | :---------: | :---------: | :---------------------------------------------------------------: |
-|     **[`accept`](#accept)**     | `{String}`  |     `*`     |          Controls which Draggable elements are accepted.          |
-|  **[`disabled`](#disabled-2)**  | `{Boolean}` |    null     |             Allows disabling the Droppable behaviour.             |
-|     **[`greedy`](#greedy)**     | `{Boolean}` |   `false`   |       How to handle dropping on nested Droppable elements.        |
-|     **[`scope`](#scope-2)**     | `{String}`  |  `default`  | Used to group sets of Draggable, Droppable and Sortable elements. |
-| **[`tolerance`](#tolerance-1)** | `{String}`  | `intersect` |       Intersection mode between Draggables and Droppables.        |
+|             Name              |        Type         |   Default   |                            Description                            |
+| :---------------------------: | :-----------------: | :---------: | :---------------------------------------------------------------: |
+|    **[`accept`](#accept)**    | `{String,Function}` |     `*`     |          Controls which Draggable elements are accepted.          |
+| **[`disabled`](#disabled-1)** |     `{Boolean}`     |    null     |             Allows disabling the Droppable behaviour.             |
+|    **[`greedy`](#greedy)**    |     `{Boolean}`     |   `false`   |       How to handle dropping on nested Droppable elements.        |
+|    **[`scope`](#scope-1)**    |     `{String}`      |  `default`  | Used to group sets of Draggable, Droppable and Sortable elements. |
+| **[`tolerance`](#tolerance)** |     `{String}`      | `intersect` |       Intersection mode between Draggables and Droppables.        |
 
 ### `accept`
 
-Type: `String|Function`
-Default: `*`
-Accepted values: a CSS selector or a function
+**Type:** `String,Function`  
+**Default:** `*`  
+**Accepted values:** a CSS selector or a function
 
 Controls which Draggable elements can be accepted by this Droppable.
-It can be a CSS selector that needs to match the accepted Draggables or a function that receives each dragging element, accepting if it returns true.
+It can be a CSS selector that needs to match the accepted Draggables or a function that receives each dragging element and returns true if the element is accepted.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -551,8 +551,8 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `disabled`
 
-Type: `Boolean`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 Allows disabling the Droppable if set to `true`.
 
@@ -572,8 +572,8 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `greedy`
 
-Type: `Boolean`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 By default, when an element is dropped on nested Droppables, each Droppable will receive the element. However, by setting this option to `true`, any parent Droppables will not receive the element.
 
@@ -600,8 +600,8 @@ new Droppable(document.querySelector('#drop2'), {
 
 ### `scope`
 
-Type: `String`
-Default: `default`
+**Type:** `String`  
+**Default:** `default`
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to the [`accept`](#accept) option. A Droppable will only accept a Draggable of the same scope.
 
@@ -623,15 +623,15 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `tolerance`
 
-Type: `String`
-Default: `intersect`
-Accepted values: `fit`, `intersect`, `pointer`, `touch`
+**Type:** `String`  
+**Default:** `intersect`  
+**Accepted values:** `fit`, `intersect`, `pointer` or `touch`
 
 Specifies which mode to use for testing whether a Draggable is hovering over a Droppable.
-The `fit` option requires the draggable to overlap the droppable entirely.
-The `intersect` option requires the draggable to overlap the droppable at 50% in both directions.
-The `pointer` requires the mouse pointer to overlap the droppable.
-The `touch` requires the draggable to overlap the droppable in any amount or direction.
+The `fit` option requires the dragging element to overlap the droppable area entirely.
+The `intersect` option requires the dragging element to overlap the droppable area at 50% in both directions.
+The `pointer` requires the mouse pointer to overlap the droppable area.
+The `touch` requires the dragging element to overlap the droppable area in any amount or direction.
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -649,21 +649,21 @@ new Droppable(document.querySelector('#drop1'), {
 
 #### Events
 
-|            Name            |                            Description                            |
-| :------------------------: | :---------------------------------------------------------------: |
-|    **`droppable:init`**    |             Called when the Droppable is initialized.             |
-|  **`droppable:activate`**  | Called when drag starts on a Draggable accepted by the Droppable. |
-|    **`droppable:over`**    |      Called when a Draggable intersects with the Droppable.       |
-|    **`droppable:drop`**    |      Called when a Draggable is dropped into the Droppable.       |
-|    **`droppable:out`**     |   Called when a Draggable is dragged out of the Droppable area.   |
-| **`droppable:deactivate`** | Called when drag stops on a Draggable accepted by the Droppable.  |
-|   **`draggable:destry`**   |              Called when the Droppable is destroyed.              |
+|            Name            |                                  Description                                   |
+| :------------------------: | :----------------------------------------------------------------------------: |
+|    **`droppable:init`**    |                   Called when the Droppable is initialized.                    |
+|  **`droppable:activate`**  | Called when drag starts on a Draggable or Sortable accepted by the Droppable.  |
+|    **`droppable:over`**    |    Called when a Draggable or Sortable item intersects with the Droppable.     |
+|    **`droppable:drop`**    |    Called when a Draggable or Sortable item is dropped into the Droppable.     |
+|    **`droppable:out`**     | Called when a Draggable or Sortable item is dragged out of the Droppable area. |
+| **`droppable:deactivate`** |  Called when drag stops on a Draggable or Sortable accepted by the Droppable.  |
+|   **`draggable:destry`**   |                    Called when the Droppable is destroyed.                     |
 
 ## Sortable
 
 Transforms elements that contains multiple child nodes in a way that these child nodes can be sorted by using the mouse.
 
-Elements modified or created will use the same CSS classes from jQuery UI:
+Elements modified or created will use the same CSS classes inherited from jQuery UI's implementation:
 
 -   ui-sortable: the element containing the sortable elements
 -   ui-sortable-handle: the handle of each sortable item. By default, each sortable item is also a handle
@@ -674,41 +674,41 @@ Elements modified or created will use the same CSS classes from jQuery UI:
 
 #### Options
 
-|                        Name                         |     Type     |                  Default                  |                             Description                             |
-| :-------------------------------------------------: | :----------: | :---------------------------------------: | :-----------------------------------------------------------------: |
-|            **[`appendTo`](#appendTo-2)**            |  `{String}`  |                    `*`                    |                 Where to append the sorting helper.                 |
-|                **[`axis`](#axis-2)**                |  `{String}`  |                   null                    |               Constraint sorting movement to an axis.               |
-|          **[`connectWith`](#connectWith)**          |  `{String}`  |                   null                    |           Allows to connect to other Sortable instances.            |
-|         **[`containment`](#containment-2)**         |  `{String}`  |                   null                    |        Constraints sorting movement to an element or region.        |
-|              **[`cursor`](#cursor-2)**              |  `{String}`  |                   null                    |                 Style for the cursor while sorting.                 |
-|            **[`disabled`](#disabled-3)**            | `{Boolean}`  |                  `false`                  |               Allows disabling the sorting behaviour.               |
-|            **[`distance`](#distance-2)**            |  `{Number}`  |                    `0`                    |            Distance in pixels before sorting can start.             |
-|          **[`dropOnEmpty`](#dropOnEmpty)**          | `{Boolean}`  |                  `false`                  | Whether items from this Sortable can be dropped on empty Sortables. |
-|      **[`forceHelperSize`](#forceHelperSize)**      | `{Boolean}`  |                  `false`                  |         Whether to force the sorting helper to have a size.         |
-| **[`forcePlaceholderSize`](#forcePlaceholderSize)** | `{Boolean}`  |                  `false`                  |      Whether to force the sorting placeholder to have a size.       |
-|                **[`grid`](#grid-2)**                |  `{Array}`   |                    `*`                    |      Snaps the sorting helper to a grid, every x and y pixels.      |
-|              **[`handle`](#handle-2)**              |  `{String}`  |                   null                    |         Sorting only starts if click matches this selector.         |
-|              **[`helper`](#helper-2)**              |  `{String}`  |                `original`                 |                 Configures the sorting helper node.                 |
-|                **[`items`](#items)**                |  `{String}`  |                   null                    |              Specifies which items should be sortable.              |
-|             **[`opacity`](#opacity-2)**             |  `{String}`  |                   null`                   |             Allows changing the opacity while sorting.              |
-|              **[`revert`](#revert-2)**              |  `{Boolean   |                  String                   |                             Function}`                              | `false` | Whether the sortable item should be reverted after sort stops. |
-|      **[`revertDuration`](#revertDuration-2)**      | `{ Number }` |                   `200`                   |          Duration in milliseconds of the revert animation.          |
-|               **[`scope`](#scope-2)**               |  `{String}`  |                 `default`                 |  Used to group sets of draggable, droppable and sortable elements.  |
-|              **[`scroll`](#scroll-2)**              | `{Boolean}`  |                  `true`                   |             Allows auto-scrolling within the container.             |
-|   **[`scrollSensitivity`](#scrollSensitivity-2)**   |  `{Number}`  |                   `20`                    |                    Scroll sensitivity in pixels.                    |
-|         **[`scrollSpeed`](scrollSpeed-2)**          |  `{Number}`  |                   `10`                    |                       Scroll speed in pixels.                       |
-|                **[`skip`](#skip-2)**                |  `{String}`  | `input, textarea, button, select, option` |          Prevents sorting if this CSS selector is matched.          |
-|           **[`tolerance`](#tolerance-2)**           |  `{String}`  |                `intersect`                |              Intersection mode between sortable items.              |
-|              **[`zIndex`](#zIndex-2)**              |  `{Number}`  |                   null                    |             Allows changing the z-index while sorting.              |
+|                        Name                         |            Type             |                  Default                  |                             Description                             |
+| :-------------------------------------------------: | :-------------------------: | :---------------------------------------: | :-----------------------------------------------------------------: |
+|            **[`appendTo`](#appendto-1)**            |         `{String}`          |                    `*`                    |                 Where to append the sorting helper.                 |
+|                **[`axis`](#axis-1)**                |         `{String}`          |                   null                    |               Constraint sorting movement to an axis.               |
+|          **[`connectWith`](#connectwith)**          |         `{String}`          |                   null                    |           Allows to connect to other Sortable instances.            |
+|         **[`containment`](#containment-1)**         |      `{String,Array}`       |                   null                    |        Constraints sorting movement to an element or region.        |
+|              **[`cursor`](#cursor-1)**              |         `{String}`          |                   null                    |                 Style for the cursor while sorting.                 |
+|            **[`disabled`](#disabled-2)**            |         `{Boolean}`         |                  `false`                  |               Allows disabling the sorting behaviour.               |
+|            **[`distance`](#distance-1)**            |         `{Number}`          |                    `0`                    |            Distance in pixels before sorting can start.             |
+|          **[`dropOnEmpty`](#droponempty)**          |         `{Boolean}`         |                  `false`                  | Whether items from this Sortable can be dropped on empty Sortables. |
+|      **[`forceHelperSize`](#forcehelpersize)**      |         `{Boolean}`         |                  `false`                  |         Whether to force the sorting helper to have a size.         |
+| **[`forcePlaceholderSize`](#forceplaceholdersize)** |         `{Boolean}`         |                  `false`                  |      Whether to force the sorting placeholder to have a size.       |
+|                **[`grid`](#grid-1)**                |          `{Array}`          |                    `*`                    |      Snaps the sorting helper to a grid, every x and y pixels.      |
+|              **[`handle`](#handle-1)**              |         `{String}`          |                   null                    |         Sorting only starts if click matches this selector.         |
+|              **[`helper`](#helper-1)**              |     `{String,Function}`     |                `original`                 |                 Configures the sorting helper node.                 |
+|                **[`items`](#items)**                |     `{String,Function}`     |                   null                    |              Specifies which items should be sortable.              |
+|             **[`opacity`](#opacity-1)**             |         `{Number}`          |                   null`                   |             Allows changing the opacity while sorting.              |
+|              **[`revert`](#revert-1)**              | `{Boolean,String,Function}` |                  `false`                  |   Whether the sortable item should be reverted after sort stops.    |
+|      **[`revertDuration`](#revertduration-1)**      |         `{Number}`          |                   `200`                   |          Duration in milliseconds of the revert animation.          |
+|               **[`scope`](#scope-1)**               |         `{String}`          |                 `default`                 |  Used to group sets of draggable, droppable and sortable elements.  |
+|              **[`scroll`](#scroll-1)**              |         `{Boolean}`         |                  `true`                   |             Allows auto-scrolling within the container.             |
+|   **[`scrollSensitivity`](#scrollsensitivity-1)**   |         `{Number}`          |                   `20`                    |                    Scroll sensitivity in pixels.                    |
+|         **[`scrollSpeed`](#scrollspeed-1)**         |         `{Number}`          |                   `10`                    |                       Scroll speed in pixels.                       |
+|                **[`skip`](#skip-1)**                |         `{String}`          | `input, textarea, button, select, option` |          Prevents sorting if this CSS selector is matched.          |
+|           **[`tolerance`](#tolerance-1)**           |         `{String}`          |                `intersect`                |              Intersection mode between sortable items.              |
+|              **[`zIndex`](#zindex-1)**              |         `{Number}`          |                   null                    |             Allows changing the z-index while sorting.              |
 
 ### `appendTo`
 
-Type: `String`
-Default: `parent`
-Accepted values: `parent` or a CSS selector
+**Type:** `String`  
+**Default:** `parent`  
+**Accepted values:** `parent` or a CSS selector
 
 Which element the sorting helper should be appended to while sorting.
-Only works when the [`helper`](#helper-2) option is set to not use the original element.
+Only works when the [`helper`](#helper-1) option is set to not use the original element.
 
 ```html
 <div id="sort1">
@@ -727,9 +727,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `axis`
 
-Type: `String`
-Default: null
-Accepted values: `x` or `y`
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** `x` or `y`
 
 Constrains sorting to either the horizontal (x) or vertical (y) axis.
 
@@ -750,9 +750,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `connectWith`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** a CSS selector
 
 A selector of other Sortable elements that the items from this list should be connected to. This is a one-way relationship, if you want the items to be connected in both directions, the `connectWith` option must be set on both Sortable elements.
 
@@ -779,9 +779,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `containment`
 
-Type: `String|Array`
-Default: null
-Accepted values: `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
+**Type:** `String,Array`  
+**Default:** null  
+**Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
 
 Constrains sorting to within the bounds of the specified element or region.
 
@@ -802,9 +802,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `cursor`
 
-Type: `String`
-Default: null
-Accepted values: any values accepted by the `cursor` CSS property
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** any values accepted by the `cursor` CSS property
 
 Allows changing the cursor style while sorting items.
 
@@ -825,9 +825,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `disabled`
 
-Type: `Boolean`
-Default: `false`
-Accepted values: `true` or `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 Determines whether the Sortable instance should be disabled.
 
@@ -848,8 +847,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `distance`
 
-Type: `Number`
-Default: `0`
+**Type:** `Number`  
+**Default:** `0`
 
 Distance in pixels that the mouse should move before the sorting should start. Prevents unwanted sorts when sortable items are clicked.
 
@@ -870,10 +869,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `dropOnEmpty`
 
-Type: `Boolean`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
-If `false`, items from this Sortable can't be dropped on an empty connected Sortable (see the [`connectWith`](#connectWith) option.
+If `false`, items from this Sortable can't be dropped on an empty connected Sortable (see the [`connectWith`](#connectwith) option.
 
 ```html
 <div id="sort1">
@@ -897,8 +896,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `forceHelperSize`
 
-Type: `Booleanr`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 Whether to force the sorting helper to have a size.
 
@@ -919,8 +918,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `forcePlaceholderSize`
 
-Type: `Boolean`
-Default: `false`
+**Type:** `Boolean`  
+**Default:** `false`
 
 Whether to force the sorting placeholder to have a size.
 
@@ -941,9 +940,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `grid`
 
-Type: `Array`
-Default: null
-Accepted values: an array of 2 numbers in the form `[x, y]`
+**Type:** `Array`  
+**Default:** null  
+**Accepted values:** an array of 2 numbers in the form `[x, y]`
 
 Snaps the sorting helper to a grid, every x and y pixels.
 
@@ -964,9 +963,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `handle`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** a CSS selector
 
 If specified, restricts sorting from starting unless the mousedown occurs on the specified element(s). Only elements that descend from the sortable items are permitted.
 
@@ -991,9 +990,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `helper`
 
-Type: `String|Function`
-Default: `original`
-Accepted values: `original`, `helper` or a function
+**Type:** `String,Function`  
+**Default:** `original`  
+**Accepted values:** `original`, `helper` or a function
 
 Allows for a helper element to be used for sorting display.
 If set to `clone`, then the item being sorted will be cloned and the clone will be dragged.
@@ -1015,13 +1014,13 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `items`
 
-Type: `String`
-Default: null
-Accepted values: a CSS selector
+**Type:** `String,Function`  
+**Default:** null  
+**Accepted values:** a CSS selector or a function
 
-Specifies how to find the sortable items.
+Specifies how to find the sortable items. It can be provided as a CSS selector or a function returning an array of sortable nodes
 
-> By default, all the direct descendants of the node passed to Sortable will be considered sortable.
+> By default, all the direct descendants of the element will be considered sortable.
 
 ```html
 <div id="sort1">
@@ -1040,9 +1039,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `opacity`
 
-Type: `Number`
-Default: null
-Accepted values: values accepted by the `opacity` CSS property
+**Type:** `Number`  
+**Default:** null
 
 Allows changing the opacity of the items while being sorted.
 
@@ -1063,13 +1061,14 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `revert`
 
-Type: `Boolean|String|Function`
-Default: `false`
-Accepted values: `invalid`, `valid`, `true`, `false` or a function
+**Type:** `Boolean,String,Function`  
+**Default:** `false`  
+**Accepted values:** `invalid`, `valid`, `true`, `false` or a function
 
-Whether the element should revert to its start position when sorting stops.
-If set to `true`, the element will always revert.
+Whether the sortable item should revert to its start position when sorting stops.
+If set to `true`, the sortable item will always revert.
 If set to `invalid` or `valid` it will respectively revert if dropped on a droppable or not.
+If it's a function, it must return `true` to indicate that the sortable item should revert.
 
 ```html
 <div id="sort1">
@@ -1088,8 +1087,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `revertDuration`
 
-Type: `Number`
-Default: `200`
+**Type:** `Number`  
+**Default:** `200`
 
 Uses an animation with this specific duration in milliseconds when reverting the items.
 
@@ -1111,8 +1110,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scope`
 
-Type: `String`
-Default: `default`
+**Type:** `String`  
+**Default:** `default`
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to Droppable's [`accept`](#accept) option. A Sortable with the same scope value as a Droppable will be accepted by it.
 
@@ -1133,8 +1132,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scroll`
 
-Type: `Boolean`
-Default: `true`
+**Type:** `Boolean`  
+**Default:** `true`
 
 If this option is set to `true`, the container of the element will auto-scroll if needed.
 
@@ -1155,12 +1154,12 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scrollSensitivity`
 
-Type: `Number`
-Default: `20`
+**Type:** `Number`  
+**Default:** `20`
 
 Determines how close to the edge of the viewport the auto-scroll should happen. Distance is realtive to the mouse pointer, not to the sorting item.
 
-> This option is ignored if [`scroll`](#scroll-2) is set to `false`.
+> This option is ignored if [`scroll`](#scroll-1) is set to `false`.
 
 ```html
 <div id="sort1">
@@ -1180,12 +1179,12 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scrollSpeed`
 
-Type: `Number`
-Default: `10`
+**Type:** `Number`  
+**Default:** `10`
 
-The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollSensitivity-2) is met.
+The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollsensitivity-1) is met.
 
-> This option is ignored if [`scroll`](#scroll-2) is set to `false`.
+> This option is ignored if [`scroll`](#scroll-1) is set to `false`.
 
 ```html
 <div id="sort1">
@@ -1205,9 +1204,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `skip`
 
-Type: `String`
-Default: `input, textarea, button, select, option`
-Accepted values: a CSS selector
+**Type:** `String`  
+**Default:** `input, textarea, button, select, option`  
+**Accepted values:** a CSS selector
 
 Prevents sorting if the clicked element matches the given CSS selector.
 
@@ -1234,9 +1233,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `tolerance`
 
-Type: `String`
-Default: null
-Accepted values: `intersect` and `pointer`
+**Type:** `String`  
+**Default:** null  
+**Accepted values:** `intersect` or `pointer`
 
 Specifies which mode to use for testing whether the item being moved is hovering over another item.
 
@@ -1257,8 +1256,8 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `zIndex`
 
-Type: `Number`
-Default: null
+**Type:** `Number`  
+**Default:** null
 
 Allows to change the z-index of the item when being sorted.
 
@@ -1298,7 +1297,7 @@ new Sortable(document.querySelector('#sort1'), {
 ## Contributing
 
 Feel free to submit pull requests.
-The most wanted help would be bringing the remaining features from jQuery UI that were not ported.
+The most wanted help would be bringing the remaining features from jQuery UI's that were not translated to this library.
 However, other new features and fixes for any kind of defects are very welcome.
 
 ## License
