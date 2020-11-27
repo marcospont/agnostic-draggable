@@ -18,9 +18,9 @@ Using NPM, type in the following command to install `agnostic-draggable`:
 npm i agnostic-draggable --save
 ```
 
-# Usage and Documentation
+## Usage and Documentation
 
-### Draggable
+## Draggable
 
 Enables dragging functionality on any DOM element. Move the Draggable element by clicking on it and dragging it anywhere within the viewport.
 
@@ -30,7 +30,7 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 -   ui-draggable-handle: the handle of the draggable element. By default, each draggable is also a handle
 -   ui-draggable-helper: the dragging helper
 
-#### Options
+### Options
 
 |                     Name                      |            Type             |                  Default                  |                               Description                                |
 | :-------------------------------------------: | :-------------------------: | :---------------------------------------: | :----------------------------------------------------------------------: |
@@ -480,7 +480,7 @@ new Draggable(document.querySelector('#drag1'), {
 });
 ```
 
-#### Events
+### Events
 
 |          Name           |                                     Description                                     |
 | :---------------------: | :---------------------------------------------------------------------------------: |
@@ -490,7 +490,7 @@ new Draggable(document.querySelector('#drag1'), {
 |     **`drag:stop`**     | Called when the drag operation stops. Can be canceled, preventing an unwanted drop. |
 | **`draggable:destroy`** |                       Called when the Draggable is destroyed.                       |
 
-#### Cancelling an event
+### Cancelling an event
 
 ```html
 <div id="drag1">Drag Me</div>
@@ -506,7 +506,9 @@ new Draggable(document.querySelector('#drag1'), null, {
 });
 ```
 
-### Droppable
+---
+
+## Droppable
 
 Transforms elements into droppables or drop zones. This means that elements controlled by a [`Draggable`](#draggable) can be dropped into a Droppable if accepted by them.
 
@@ -516,7 +518,7 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 -   ui-droppable-active: identifies an active droppable element
 -   ui-droppable-hover: used when the droppable has a draggable intersecting with it
 
-#### Options
+### Options
 
 |             Name              |        Type         |   Default   |                            Description                            |
 | :---------------------------: | :-----------------: | :---------: | :---------------------------------------------------------------: |
@@ -647,7 +649,7 @@ new Droppable(document.querySelector('#drop1'), {
 });
 ```
 
-#### Events
+### Events
 
 |            Name            |                                  Description                                   |
 | :------------------------: | :----------------------------------------------------------------------------: |
@@ -658,6 +660,8 @@ new Droppable(document.querySelector('#drop1'), {
 |    **`droppable:out`**     | Called when a Draggable or Sortable item is dragged out of the Droppable area. |
 | **`droppable:deactivate`** |  Called when drag stops on a Draggable or Sortable accepted by the Droppable.  |
 |   **`draggable:destry`**   |                    Called when the Droppable is destroyed.                     |
+
+---
 
 ## Sortable
 
@@ -672,7 +676,7 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 
 > In order to use this component to sort table rows, the element passed should be the `tbody`, not the `table`.
 
-#### Options
+### Options
 
 |                        Name                         |            Type             |                  Default                  |                             Description                             |
 | :-------------------------------------------------: | :-------------------------: | :---------------------------------------: | :-----------------------------------------------------------------: |
@@ -1276,7 +1280,7 @@ new Sortable(document.querySelector('#sort1'), {
 });
 ```
 
-#### Events
+### Events
 
 |           Name            |                                        Description                                         |
 | :-----------------------: | :----------------------------------------------------------------------------------------: |
