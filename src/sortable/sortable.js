@@ -290,8 +290,9 @@ export default class Sortable extends Draggable {
 		}
 		if (!noPropagation) {
 			const sortMove = new SortMoveEvent({
-				source: this.element,
+				source: this.currentItem,
 				helper: this.helper,
+				placeholder: this.placeholder,
 				sensorEvent,
 				originalEvent: sensorEvent.originalEvent,
 				position: this.position.current
