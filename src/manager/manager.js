@@ -86,7 +86,7 @@ export class DragDropManager {
 		let dropped = null;
 
 		this.getDroppables(draggable.scope).forEach(droppable => {
-			if (droppable.intersect(draggable)) {
+			if (droppable.intersect(draggable, event)) {
 				dropped = droppable.drop(event) || dropped;
 			}
 			if (droppable.accept(draggable)) {
