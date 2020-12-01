@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/marcospont/agnostic-draggable/compare/v1.0.3...v1.0.4) (2020-12-01)
+
+
+### Bug Fixes
+
+* fixed wrong and missing parameters when emitting the sortmove event ([28b795d](https://github.com/marcospont/agnostic-draggable/commit/28b795dac3df7194240006e707fb86abd1389ca5))
+
 ### [1.0.3](https://github.com/marcospont/agnostic-draggable/compare/v1.0.2...v1.0.3) (2020-12-01)
 
 
