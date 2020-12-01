@@ -375,7 +375,6 @@ export default class Draggable {
 			left: this.position.current.left + 'px',
 			top: this.position.current.top + 'px'
 		});
-		console.log(this.position.current, this.elementClass);
 
 		DragDropManager.onDragMove(this, sensorEvent);
 	};
