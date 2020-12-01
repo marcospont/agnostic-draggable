@@ -213,7 +213,7 @@ export default class Droppable {
 
 	drop(event) {
 		const draggable = DragDropManager.draggable;
-		let childIntersection = true;
+		let childIntersection = false;
 
 		if (draggable && (draggable.currentItem && draggable.element) !== this.element) {
 			const childDroppables = querySelectorAll(this.element, ':not(.ui-draggable-dragging)').filter(element => element[this.dataProperty]);
