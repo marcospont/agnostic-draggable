@@ -443,7 +443,7 @@ export default class Draggable {
 
 	trigger(event) {
 		this.emitter.emit(event.type, event);
-		if (/^drag\:/.test(event.type)) {
+		if (/^drag:/.test(event.type)) {
 			this.position.absolute = this.convertPosition(this.position.current, 'absolute');
 		}
 	}

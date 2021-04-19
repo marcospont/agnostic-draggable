@@ -5,5 +5,3 @@ extends:
     - prettier/standard
 plugins:
     - prettier
-rules:
-	constructor-super: off

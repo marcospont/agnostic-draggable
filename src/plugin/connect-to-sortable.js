@@ -1,7 +1,7 @@
 import { querySelectorAll, style } from 'dom-helpers';
 
 import Plugin from './plugin';
-import { SortableActivateEvent, SortableOverEvent, SortableOutEvent, SortableDeactivateEvent } from '../sortable/sortable-event';
+import { SortableActivateEvent, SortableDeactivateEvent } from '../sortable/sortable-event';
 import { sortableProp } from '../util/constants';
 import { contains, styleAsNumber } from '../util';
 
