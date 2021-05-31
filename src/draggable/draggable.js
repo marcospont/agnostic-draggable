@@ -559,7 +559,7 @@ export default class Draggable {
 		}
 
 		return {
-			left: result.top + parseInt(style(offsetParent, 'borderLeftWidth'), 10) || 0,
+			left: result.left + parseInt(style(offsetParent, 'borderLeftWidth'), 10) || 0,
 			top: result.top + parseInt(style(offsetParent, 'borderTopWidth'), 10) || 0
 		};
 	}
