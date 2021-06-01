@@ -378,9 +378,9 @@ export default class Sortable extends Draggable {
 
 		if (
 			(revert === 'invalid' && !sortStop.droppable) ||
-			(revert === 'valid' && sortStop.droppable) ||
-			revert ||
-			(isFunction(revert) && revert(this.currentItem, sortStop.droppable))
+			(revert === 'valid'   && sortStop.droppable)  ||
+			(isFunction(revert)   && revert(this.currentItem, sortStop.droppable)) ||
+			(revert == true)
 		) {
 			this.reverting = true;
 			anime({
