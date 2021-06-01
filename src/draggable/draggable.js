@@ -414,9 +414,9 @@ export default class Draggable {
 
 		if (
 			(revert === 'invalid' && !dragStop.droppable) ||
-			(revert === 'valid' && dragStop.droppable) ||
-			revert ||
-			(isFunction(revert) && revert(this.element, dragStop.droppable))
+			(revert === 'valid'   && dragStop.droppable)  ||
+			(isFunction(revert)   && revert(this.element, dragStop.droppable)) ||
+			(revert == true)
 		) {
 			this.reverting = true;
 			anime({
