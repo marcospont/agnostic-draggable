@@ -11,8 +11,8 @@ export default [
 			format: 'umd',
 			exports: 'named',
 			name: 'agnosticDraggable',
-			sourcemap: true //,
-			// plugins: [terser()]
+			sourcemap: true,
+			plugins: [terser()]
 		},
 		plugins: [
 			resolve({ browser: true, preferBuiltins: false }),
@@ -25,8 +25,7 @@ export default [
 						'@babel/preset-env',
 						{
 							useBuiltIns: 'usage',
-							corejs: 3,
-							loose: true
+							corejs: 3
 						}
 					]
 				],
