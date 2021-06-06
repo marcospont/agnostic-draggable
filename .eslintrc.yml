@@ -1,6 +1,6 @@
 parser: babel-eslint
 extends:
-    - standard
-    - prettier
+	- standard
+	- prettier
 plugins:
-    - prettier
+	- prettier
