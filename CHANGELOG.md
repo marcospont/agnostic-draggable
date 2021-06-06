@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/marcospont/agnostic-draggable/compare/v1.0.5...v1.0.6) (2021-06-06)
+
+
+### Bug Fixes
+
+* bad calculation of draggable's parent offset ([@rozek](https://github.com/rozek)) ([27528f1](https://github.com/marcospont/agnostic-draggable/commit/27528f1242aa6d420ede7d5113a88ea1151b1554))
+* revert function was not being called ([@rozek](https://github.com/rozek)) ([3befc78](https://github.com/marcospont/agnostic-draggable/commit/3befc78834b543fd18872668b5c7f82a392fd90c))
+
 ### [1.0.5](https://github.com/marcospont/agnostic-draggable/compare/v1.0.4...v1.0.5) (2021-04-19)
 
 ### [1.0.4](https://github.com/marcospont/agnostic-draggable/compare/v1.0.3...v1.0.4) (2020-12-01)
