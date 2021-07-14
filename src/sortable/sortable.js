@@ -47,7 +47,6 @@ import {
 	isRoot,
 	setPositionAbsolute,
 	show,
-	styleAsNumber,
 	toArray
 } from '../util';
 import { sortableProp, sortableEl, sortableHandle, sortableHelper, sortablePlaceholder } from '../util/constants';
@@ -599,20 +598,12 @@ export default class Sortable extends Draggable {
 			}
 			if (!helperNode.style.width || forceHelperSize) {
 				style(helperNode, {
-					width:
-						width(this.currentItem) -
-						styleAsNumber(this.currentItem, 'paddingLeft') -
-						styleAsNumber(this.currentItem, 'paddingRight') +
-						'px'
+					width: width(this.currentItem) + 'px'
 				});
 			}
 			if (!helperNode.style.height || forceHelperSize) {
 				style(helperNode, {
-					height:
-						height(this.currentItem) -
-						styleAsNumber(this.currentItem, 'paddingTop') -
-						styleAsNumber(this.currentItem, 'paddingBottom') +
-						'px'
+					height: height(this.currentItem) + 'px'
 				});
 			}
 
@@ -667,20 +658,12 @@ export default class Sortable extends Draggable {
 		} else if (forcePlaceholderSize) {
 			if (!width(placeholder)) {
 				style(placeholder, {
-					width:
-						width(this.currentItem) -
-						styleAsNumber(this.currentItem, 'paddingLeft') -
-						styleAsNumber(this.currentItem, 'paddingRight') +
-						'px'
+					width: width(this.currentItem) + 'px'
 				});
 			}
 			if (!height(placeholder)) {
 				style(placeholder, {
-					height:
-						height(this.currentItem) -
-						styleAsNumber(this.currentItem, 'paddingTop') -
-						styleAsNumber(this.currentItem, 'paddingBottom') +
-						'px'
+					height: height(this.currentItem) + 'px'
 				});
 			}
 		}
