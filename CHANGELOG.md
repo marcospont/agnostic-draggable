@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/marcospont/agnostic-draggable/compare/v1.0.6...v1.1.0) (2021-07-14)
+
+
+### Features
+
+* added new option hidePlaceholder ([8385a17](https://github.com/marcospont/agnostic-draggable/commit/8385a17ab90d829a697a15952aa0fe397e33a717))
+
+
+### Bug Fixes
+
+* helper and placeholder size sync was not working ([e80ba36](https://github.com/marcospont/agnostic-draggable/commit/e80ba36c958749a42578662ea5c4250835eb0892))
+
 ### [1.0.6](https://github.com/marcospont/agnostic-draggable/compare/v1.0.5...v1.0.6) (2021-06-06)
 
 
