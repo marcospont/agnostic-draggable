@@ -597,10 +597,22 @@ export default class Sortable extends Draggable {
 				};
 			}
 			if (!helperNode.style.width || forceHelperSize) {
-				width(helperNode, width(this.currentItem));
+				style(helperNode, {
+					width:
+						width(this.currentItem) -
+						styleAsNumber(this.currentItem, 'paddingLeft') -
+						styleAsNumber(this.currentItem, 'paddingRight') +
+						'px'
+				});
 			}
 			if (!helperNode.style.height || forceHelperSize) {
-				height(helperNode, height(this.currentItem));
+				style(helperNode, {
+					height:
+						height(this.currentItem) -
+						styleAsNumber(this.currentItem, 'paddingTop') -
+						styleAsNumber(this.currentItem, 'paddingBottom') +
+						'px'
+				});
 			}
 
 			return helperNode;
@@ -650,18 +662,24 @@ export default class Sortable extends Draggable {
 	updatePlaceholder(sortable, placeholder) {
 		const { forcePlaceholderSize } = sortable.options;
 
-		if (placeholder && forcePlaceholderSize) {
+		if (forcePlaceholderSize) {
 			if (!width(placeholder)) {
-				width(
-					placeholder,
-					width(this.currentItem) + styleAsNumber(this.currentItem, 'paddingLeft') + styleAsNumber(this.currentItem, 'paddingRight')
-				);
+				style(placeholder, {
+					width:
+						width(this.currentItem) -
+						styleAsNumber(this.currentItem, 'paddingLeft') -
+						styleAsNumber(this.currentItem, 'paddingRight') +
+						'px'
+				});
 			}
 			if (!height(placeholder)) {
-				height(
-					placeholder,
-					height(this.currentItem) + styleAsNumber(this.currentItem, 'paddingTop') + styleAsNumber(this.currentItem, 'paddingBottom')
-				);
+				style(placeholder, {
+					height:
+						height(this.currentItem) -
+						styleAsNumber(this.currentItem, 'paddingTop') -
+						styleAsNumber(this.currentItem, 'paddingBottom') +
+						'px'
+				});
 			}
 		}
 	}

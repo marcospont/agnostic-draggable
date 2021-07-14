@@ -58,7 +58,7 @@
 				padding: 0;
 				list-style: none;
 			}
-			.sortable li {
+			.sortable li:not(.ui-sortable-helper) {
 				display: block;
 				border: 1px solid #000;
 				background-color: #fff;
@@ -66,6 +66,12 @@
 				width: 200px;
 				height: 20px;
 				cursor: pointer;
+			}
+			.sortable li.ui-sortable-helper {
+				display: block;
+				border: 1px solid #000;
+				background-color: #fff;
+				padding: 10px;
 			}
 		</style>
 		<script type="text/javascript" src="../dist/agnostic-draggable.js"></script>
@@ -155,7 +161,9 @@
 					cursor: 'move',
 					helper: 'clone',
 					opacity: 0.5,
-					distance: 10
+					distance: 10,
+					forceHelperSize: true,
+					hidePlaceholder: true
 				});
 			});
 		</script>
