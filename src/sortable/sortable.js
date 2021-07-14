@@ -64,6 +64,7 @@ export default class Sortable extends Draggable {
 		dropOnEmpty: true,
 		forceHelperSize: false,
 		forcePlaceholderSize: false,
+		hidePlaceholder: false,
 		grid: null,
 		handle: null,
 		helper: 'original',
@@ -639,9 +640,6 @@ export default class Sortable extends Draggable {
 			} else if (nodeName === 'img') {
 				element.setAttribute('src', this.currentItem.getAttribute('src'));
 			}
-			style(element, {
-				visibility: 'hidden'
-			});
 			this.placeholder = insertAfter(element, this.currentItem);
 			this.updatePlaceholder(this, element);
 		} else {
@@ -660,9 +658,13 @@ export default class Sortable extends Draggable {
 	}
 
 	updatePlaceholder(sortable, placeholder) {
-		const { forcePlaceholderSize } = sortable.options;
+		const { forcePlaceholderSize, hidePlaceholder } = sortable.options;
 
-		if (forcePlaceholderSize) {
+		if (hidePlaceholder) {
+			style(placeholder, {
+				visibility: 'hidden'
+			});
+		} else if (forcePlaceholderSize) {
 			if (!width(placeholder)) {
 				style(placeholder, {
 					width:
