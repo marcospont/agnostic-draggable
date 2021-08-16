@@ -43,21 +43,53 @@ export class SortableRemoveEvent extends SortableEvent {
 		return this.data.item || null;
 	}
 
+	get previousIndex() {
+		return this.data.previousIndex || null;
+	}
+
 	get peerSortable() {
 		return this.data.peerSortable || null;
 	}
 }
 
-export class SortableReceiveEvent extends SortableRemoveEvent {
+export class SortableReceiveEvent extends SortableEvent {
 	static type = 'sortable:receive';
+
+	get item() {
+		return this.data.item || null;
+	}
+
+	get newIndex() {
+		return this.data.newIndex || null;
+	}
 
 	get draggable() {
 		return this.data.draggable || null;
+	}
+
+	get peerSortable() {
+		return this.data.peerSortable || null;
 	}
 }
 
 export class SortableUpdateEvent extends SortableEvent {
 	static type = 'sortable:update';
+
+	get item() {
+		return this.data.item || null;
+	}
+
+	get previousIndex() {
+		return this.data.previousIndex || null;
+	}
+
+	get newIndex() {
+		return this.data.newIndex || null;
+	}
+
+	get peerSortable() {
+		return this.data.peerSortable || null;
+	}
 }
 
 export class SortableOutEvent extends SortableActivateEvent {

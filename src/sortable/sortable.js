@@ -47,7 +47,8 @@ import {
 	isRoot,
 	setPositionAbsolute,
 	show,
-	toArray
+	toArray,
+	getChildIndex
 } from '../util';
 import { sortableProp, sortableEl, sortableHandle, sortableHelper, sortablePlaceholder } from '../util/constants';
 
@@ -92,7 +93,7 @@ export default class Sortable extends Draggable {
 
 	currentItemStyle = {};
 
-	currentItemRefs = null;
+	currentItemProps = null;
 
 	elementProportions = null;
 
@@ -204,9 +205,10 @@ export default class Sortable extends Draggable {
 			sensorEvent.cancel();
 			return;
 		} else {
-			this.currentItemRefs = {
+			this.currentItemProps = {
 				previous: this.currentItem.previousElementSibling,
-				parent: this.currentItem.parentNode
+				parent: this.currentItem.parentNode,
+				previousIndex: getChildIndex(this.currentItem)
 			};
 			this.refreshPositions();
 		}
@@ -907,8 +909,11 @@ export default class Sortable extends Draggable {
 	}
 
 	clear() {
+		let newIndex = null;
+
 		if (this.helper && this.currentItem) {
 			insertBefore(this.currentItem, this.placeholder);
+			newIndex = getChildIndex(this.currentItem);
 			if (this.helper === this.currentItem) {
 				forEach(this.currentItemStyle, (value, prop) => {
 					if (value === 'auto' || value === 'static') {
@@ -920,7 +925,7 @@ export default class Sortable extends Draggable {
 				show(this.currentItem);
 			}
 			if (this.resetCurrentItem) {
-				const { previous, parent } = this.currentItemRefs;
+				const { previous, parent } = this.currentItemProps;
 
 				if (previous) {
 					insertAfter(this.currentItem, previous);
@@ -935,18 +940,23 @@ export default class Sortable extends Draggable {
 				new SortableReceiveEvent({
 					sortable: this,
 					item: this.connectedDraggable.element,
+					newIndex,
 					draggable: this.connectedDraggable
 				})
 			);
 		}
 		if (
 			this.connectedDraggable ||
-			this.currentItemRefs.previous !== getSibling(this.currentItem, 'previous', `.${this.helperClass}`) ||
-			this.currentItemRefs.parent !== this.currentItem.parentNode
+			this.currentItemProps.previous !== getSibling(this.currentItem, 'previous', `.${this.helperClass}`) ||
+			this.currentItemProps.parent !== this.currentItem.parentNode
 		) {
 			this.trigger(
 				new SortableUpdateEvent({
-					sortable: this
+					sortable: this,
+					item: this.currentItem,
+					previousIndex: this.currentItemProps.previousIndex,
+					newIndex,
+					peerSortable: this.currentConnectedSortable !== this ? this.currentConnectedSortable : null
 				})
 			);
 		}
@@ -955,6 +965,7 @@ export default class Sortable extends Draggable {
 				new SortableRemoveEvent({
 					sortable: this,
 					item: this.currentItem,
+					previousIndex: this.currentItemProps.previousIndex,
 					peerSortable: this.currentConnectedSortable
 				})
 			);
@@ -962,12 +973,16 @@ export default class Sortable extends Draggable {
 				new SortableReceiveEvent({
 					sortable: this.currentConnectedSortable,
 					item: this.currentItem,
+					newIndex,
 					peerSortable: this
 				})
 			);
 			this.currentConnectedSortable.trigger(
 				new SortableUpdateEvent({
-					sortable: this.currentConnectedSortable
+					sortable: this.currentConnectedSortable,
+					peerSortable: this,
+					previousIndex: this.currentItemProps.previousIndex,
+					newIndex
 				})
 			);
 		}
@@ -996,7 +1011,7 @@ export default class Sortable extends Draggable {
 		}
 		this.connectedDraggable = null;
 		this.currentItem = null;
-		this.currentItemRefs = null;
+		this.currentItemProps = null;
 		this.dragging = false;
 		if (this.pendingDestroy) {
 			this.destroy();

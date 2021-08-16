@@ -54,6 +54,18 @@ const getSibling = (element, direction, skip) => {
 	return sibling;
 };
 
+const getChildIndex = element => {
+	let index = 0;
+	let nextNode = element;
+
+	while (nextNode && nextNode.previousElementSibling) {
+		nextNode = nextNode.previousElementSibling;
+		index++;
+	}
+
+	return index;
+};
+
 const containsStrict = (reference, element) => reference !== element && contains(reference, element);
 
 const insertBefore = (element, reference) => {
@@ -187,6 +199,7 @@ export {
 	hide,
 	getParents,
 	getSibling,
+	getChildIndex,
 	containsStrict as contains,
 	insertBefore,
 	insertAfter,
@@ -209,6 +222,7 @@ export default {
 	hide,
 	getParents,
 	getSibling,
+	getChildIndex,
 	contains: containsStrict,
 	insertBefore,
 	insertAfter,
