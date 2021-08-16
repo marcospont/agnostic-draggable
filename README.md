@@ -484,11 +484,45 @@ new Draggable(document.querySelector('#drag1'), {
 
 |          Name           |                                     Description                                     |
 | :---------------------: | :---------------------------------------------------------------------------------: |
-|  **`draggable:init`**   |                      Called when the Draggable is initialized.                      |
-|    **`drag:start`**     |             Called when the drag operation is started. Can be canceled.             |
-|     **`drag:move`**     |                 Called while dragging the element. Can be canceled.                 |
+|  **`draggable:init`**   | Called when the Draggable is initialized.                      |
+|    **`drag:start`**     | Called when the drag operation is started. Can be canceled.             |
+|     **`drag:move`**     | Called while dragging the element. Can be canceled.                 |
 |     **`drag:stop`**     | Called when the drag operation stops. Can be canceled, preventing an unwanted drop. |
-| **`draggable:destroy`** |                       Called when the Draggable is destroyed.                       |
+| **`draggable:destroy`** | Called when the Draggable is destroyed.                       |
+
+
+### Event Arguments
+
+### `draggable:init`
+
+**draggable:** The draggable being initialized
+
+### `drag:start`
+
+**source:** The element being dragged
+**helper:** The helper element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+
+### `drag:move`
+
+**source:** The element being dragged
+**helper:** The helper element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+**position:** The current mouse position
+
+### `drag:stop`
+
+**source:** The element being dragged
+**helper:** The helper element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+**droppable:** The droppable where the element was dropped
+
+### `draggable:destroy`
+
+**draggable** The draggable being destroyed
 
 ### Cancelling an event
 
@@ -659,7 +693,48 @@ new Droppable(document.querySelector('#drop1'), {
 |    **`droppable:drop`**    |    Called when a Draggable or Sortable item is dropped into the Droppable.     |
 |    **`droppable:out`**     | Called when a Draggable or Sortable item is dragged out of the Droppable area. |
 | **`droppable:deactivate`** |  Called when drag stops on a Draggable or Sortable accepted by the Droppable.  |
-|   **`draggable:destry`**   |                    Called when the Droppable is destroyed.                     |
+|   **`draggable:destroy`**   |                    Called when the Droppable is destroyed.                     |
+
+### Event Arguments
+
+### `droppable:init`
+
+**droppable:** The droppable being initialized
+
+### `droppable:activate`
+
+**droppable:** The droppable being activated
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the activation
+
+### `droppable:over`
+
+**droppable:** The droppable being hovered over
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+
+### `droppable:drop`
+
+**droppable:** The droppable where the element is being dropped
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+
+### `droppable:out`
+
+**droppable:** The droppable being hovered out
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+
+### `droppable:deactivate`
+
+**droppable:** The droppable being deactivated
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the activation
+
+### `droppable:destroy`
+
+**droppable:** The droppable being destroyed
+
 
 ---
 
@@ -1321,6 +1396,98 @@ new Sortable(document.querySelector('#sort1'), {
 | **`sortable:deactivate`** |             Called when drag/sort stops on a connected Draggable or Sortable.              |
 |  **`sortable:destroy`**   |                           Called when the Sortable is destroyed.                           |
 
+### Event Arguments
+
+### `sortable:init`
+
+**sortable:** The sortable being initialized
+
+### `sortable:activate`
+
+**sortable:** The sortable being activated
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+**peerSortable:** The connected sortable that originated the event
+
+### `sort:start`
+
+**source:** The element being sorted
+**helper:** The helper element
+**placeholder:** The placeholder element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+
+### `sort:move`
+
+**source:** The element being sorted
+**helper:** The helper element
+**placeholder:** The placeholder element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+**position:** The current mouse position
+
+### `sort:start`
+
+**source:** The element being sorted
+**helper:** The helper element
+**placeholder:** The placeholder element
+**sensorEvent:** The sensor event
+**originalEvent:** The original mouse event
+**droppable:** The droppable where the sorting element was dropped
+
+### `sortable:over`
+
+**sortable:** The sortable being hovered over
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+**peerSortable:** The connected sortable that originated the event
+
+### `sortable:change`
+
+**sortable:** The sortable being changed
+
+### `sortable:remove`
+
+**sortable:** The sortable from where the item was removed
+**item:** The item being removed
+**previousIndex:** The item index in the source sortable
+**peerSortable:** The connected sortable that is receiving the item
+
+### `sortable:receive`
+
+**sortable:** The sortable receiving the item
+**item:** The item being received
+**newIndex:** The item index in the target sortable
+**draggable:** The draggable that was the previous owned of the item
+**peerSortable:** The connected sortable that was the previous owner of the item
+
+### `sortable:update`
+
+**sortable:** The sortable updated
+**item:** The item that was moved
+**previousIndex:** The previous item index
+**newIndex:** The new item index
+**peerSortable:** The connected sortable that was the previous owner of the item
+
+### `sortable:out`
+
+**sortable:** The sortable being hovered out
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+**peerSortable:** The connected sortable that originated the event
+
+### `sortable:deactivate`
+
+**sortable:** The sortable being deactivated
+**sensorEvent:** The sensor event
+**draggable:** The draggable that originated the event
+**peerSortable:** The connected sortable that originated the event
+
+### `sortable:destroy`
+
+**sortable:** The sortable being destroyed
+
+---
 ## Contributing
 
 Feel free to submit pull requests.
