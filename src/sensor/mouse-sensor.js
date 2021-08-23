@@ -2,7 +2,7 @@
 import { closest } from 'dom-helpers';
 
 import Sensor from './sensor';
-import { MouseStartEvent, MouseMoveEvent, MouseStopEvent } from './mouse-event';
+import { MouseDownEvent, MouseStartEvent, MouseMoveEvent, MouseStopEvent } from './mouse-event';
 
 const preventDefault = event => {
 	event.preventDefault();
@@ -48,6 +48,15 @@ export default class MouseSensor extends Sensor {
 		this.pageX = event.pageX;
 		this.pageY = event.pageY;
 		this.startEvent = event;
+		this.trigger(
+			new MouseDownEvent({
+				pageX: event.pageX,
+				pageY: event.pageY,
+				target: event.target,
+				caller: this.caller,
+				originalEvent: event
+			})
+		);
 
 		document.addEventListener('dragstart', preventDefault);
 		document.addEventListener('mousemove', this.checkThresholds);
