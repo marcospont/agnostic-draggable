@@ -43,8 +43,6 @@ export class DragMoveEvent extends DragEvent {
 export class DragStopEvent extends DragEvent {
 	static type = 'drag:stop';
 
-	static cancelable = true;
-
 	get droppable() {
 		return this.data.droppable || null;
 	}
