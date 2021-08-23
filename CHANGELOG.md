@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/marcospont/agnostic-draggable/compare/v1.2.0...v1.3.0) (2021-08-23)
+
+
+### Features
+
+* plugins refactored to reference the parent widget as 'container' ([b456cfe](https://github.com/marcospont/agnostic-draggable/commit/b456cfeb779ed141779a5f71ac40c7f48fa567ee))
+* **resizable:** ported resizable widget from jquery ui ([a5a86ac](https://github.com/marcospont/agnostic-draggable/commit/a5a86ac742bb6fee3ab2b6217ce82ef43d437237))
+* **sensor:** added mouse:down event to mouse sensor ([dd5122c](https://github.com/marcospont/agnostic-draggable/commit/dd5122c4f4a2a61a1ada8767887e1f88d9af26cf))
+
+
+### Bug Fixes
+
+* **draggable:** drag:stop event should not be cancelable ([713e61a](https://github.com/marcospont/agnostic-draggable/commit/713e61a5b21a3ea0b0ccb1f6d7f831dec3148f2a))
+
 ## [1.2.0](https://github.com/marcospont/agnostic-draggable/compare/v1.1.2...v1.2.0) (2021-08-16)
 
 
