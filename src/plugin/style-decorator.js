@@ -1,7 +1,6 @@
 /* global HTMLElement */
 import { style } from 'dom-helpers';
 import isUndefined from 'lodash/isUndefined';
-
 import Plugin from './plugin';
 
 export default class StyleDecorator extends Plugin {
@@ -13,11 +12,15 @@ export default class StyleDecorator extends Plugin {
 
 	previousValue = null;
 
-	constructor(draggable, property, target = null) {
-		super(draggable);
+	constructor(container, property, target = null) {
+		super(container);
 		this.property = property;
 		this.target = target ? (target instanceof HTMLElement ? target : document.querySelector(target)) : null;
 		this.attach();
+	}
+
+	get supported() {
+		return this.isDraggable() || this.isSortable();
 	}
 
 	detach() {
@@ -26,14 +29,18 @@ export default class StyleDecorator extends Plugin {
 	}
 
 	get value() {
-		const { options } = this.draggable;
+		const { options } = this.container;
 
 		return this.property && !isUndefined(options[this.property]) ? options[this.property] : null;
 	}
 
+	isSortableInDraggable() {
+		return this.isDraggable() && this.container.connectedDraggable;
+	}
+
 	onDragStart = event => {
 		if (!this.target) {
-			this.target = this.draggable.helper;
+			this.target = this.container.helper;
 		}
 		if (this.value !== null && !this.isSortableInDraggable()) {
 			this.previousValue = this.getPreviousValue();
@@ -51,10 +58,6 @@ export default class StyleDecorator extends Plugin {
 			this.target = null;
 		}
 	};
-
-	isSortableInDraggable() {
-		return this.startEvent === 'sort:start' && this.draggable.connectedDraggable;
-	}
 
 	getPreviousValue() {
 		const { propertyCache } = this.constructor;

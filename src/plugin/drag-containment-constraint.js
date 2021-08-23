@@ -1,44 +1,47 @@
 import { height, offset, style, width } from 'dom-helpers';
-
 import Plugin from './plugin';
 import { styleAsNumber } from '../util';
 
-export default class ContainmentConstraint extends Plugin {
-	constructor(draggable) {
-		super(draggable);
+export default class DragContainmentConstraint extends Plugin {
+	constructor(container) {
+		super(container);
 		this.attach();
 	}
 
+	get supported() {
+		return this.isDraggable() || this.isSortable();
+	}
+
 	get containment() {
-		if (this.draggable.containmentCoords === undefined) {
-			const { containment } = this.draggable.options;
-			const { parent, relative } = this.draggable.offset;
-			const { helper, helperSize, margins } = this.draggable;
+		if (this.container.containmentCoords === undefined) {
+			const { containment } = this.container.options;
+			const { parent, relative } = this.container.offset;
+			const { helper, helperSize, margins } = this.container;
 
 			if (containment === 'window') {
-				this.draggable.containmentCoords = [
+				this.container.containmentCoords = [
 					window.pageXOffset - parent.left - relative.left,
 					window.pageYOffset - parent.top - relative.top,
 					window.pageXOffset + window.innerWidth - helperSize.width - margins.left,
 					window.pageYOffset + window.innerHeight - helperSize.height - margins.top
 				];
 			} else if (containment === 'document') {
-				this.draggable.containmentCoords = [
+				this.container.containmentCoords = [
 					0,
 					0,
 					width(document) - helperSize.width - margins.left,
 					height(document) - helperSize.height - margins.top
 				];
 			} else if (Array.isArray(containment) && containment.length === 4) {
-				this.draggable.containmentCoords = containment;
+				this.container.containmentCoords = containment;
 			} else {
 				const node = containment === 'parent' ? helper.parentNode : document.querySelector(containment);
 
 				if (node) {
 					const scrollable = /(scroll|auto)/.test(style(node, 'overflow'));
 
-					this.draggable.containmentContainer = node;
-					this.draggable.containmentCoords = [
+					this.container.containmentContainer = node;
+					this.container.containmentCoords = [
 						styleAsNumber(node, 'borderLeftWidth') + styleAsNumber(node, 'paddingLeft'),
 						styleAsNumber(node, 'borderTopWidth') + styleAsNumber(node, 'paddingTop'),
 						(scrollable ? Math.max(node.scrollWidth, node.offsetWidth) : node.offsetWidth) -
@@ -55,19 +58,19 @@ export default class ContainmentConstraint extends Plugin {
 							margins.bottom
 					];
 				} else {
-					this.draggable.containmentCoords = null;
+					this.container.containmentCoords = null;
 				}
 			}
 		}
 
-		return this.draggable.containmentCoords;
+		return this.container.containmentCoords;
 	}
 
 	constraintPosition = pos => {
 		if (this.containment) {
 			let [xMin, yMin, xMax, yMax] = this.containment;
-			const { containmentContainer } = this.draggable;
-			const { click } = this.draggable.offset;
+			const { containmentContainer } = this.container;
+			const { click } = this.container.offset;
 
 			if (containmentContainer) {
 				const containerOffset = offset(containmentContainer);

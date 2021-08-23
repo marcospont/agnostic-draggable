@@ -33,7 +33,7 @@ import {
 	SortableDestroyEvent
 } from './sortable-event';
 import { SortStartEvent, SortMoveEvent, SortStopEvent } from './sort-event';
-import { AxisConstraint, ContainmentConstraint, GridConstraint, StyleDecorator, AutoScroll } from '../plugin';
+import { AxisConstraint, DragContainmentConstraint, DragGridConstraint, StyleDecorator, AutoScroll } from '../plugin';
 import { MouseSensor } from '../sensor';
 import {
 	contains,
@@ -164,8 +164,8 @@ export default class Sortable extends Draggable {
 
 	setup = () => {
 		this.addPlugin(new AxisConstraint(this));
-		this.addPlugin(new ContainmentConstraint(this));
-		this.addPlugin(new GridConstraint(this));
+		this.addPlugin(new DragContainmentConstraint(this));
+		this.addPlugin(new DragGridConstraint(this));
 		this.addPlugin(new StyleDecorator(this, 'cursor'));
 		this.addPlugin(new StyleDecorator(this, 'opacity'));
 		this.addPlugin(new StyleDecorator(this, 'zIndex'));

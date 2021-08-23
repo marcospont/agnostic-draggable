@@ -27,8 +27,8 @@ import { DragStartEvent, DragMoveEvent, DragStopEvent } from './drag-event';
 import {
 	Plugin,
 	AxisConstraint,
-	ContainmentConstraint,
-	GridConstraint,
+	DragContainmentConstraint,
+	DragGridConstraint,
 	StyleDecorator,
 	StackController,
 	AutoScroll,
@@ -44,7 +44,8 @@ import {
 	setPositionAbsolute,
 	setPositionRelative,
 	scrollParent,
-	triggerEvent
+	triggerEvent,
+	styleAsNumber
 } from '../util';
 import { draggableProp, draggableEl, draggableHandle, draggableHelper } from '../util/constants';
 
@@ -241,8 +242,8 @@ export default class Draggable {
 
 	setup = () => {
 		this.addPlugin(new AxisConstraint(this));
-		this.addPlugin(new ContainmentConstraint(this));
-		this.addPlugin(new GridConstraint(this));
+		this.addPlugin(new DragContainmentConstraint(this));
+		this.addPlugin(new DragGridConstraint(this));
 		this.addPlugin(new StyleDecorator(this, 'cursor'));
 		this.addPlugin(new StyleDecorator(this, 'opacity'));
 		this.addPlugin(new StyleDecorator(this, 'zIndex'));
@@ -290,19 +291,19 @@ export default class Draggable {
 
 		blurActiveElement(sensorEvent);
 
+		this.dragging = true;
 		this.helper = this.createHelper(sensorEvent);
 		if (!this.helper) {
 			sensorEvent.cancel();
 			this.clear();
 			return;
+		} else {
+			addClass(this.helper, this.helperClass);
 		}
-
-		addClass(this.helper, this.helperClass);
+		this.startEvent = sensorEvent;
 		this.cacheMargins();
-		this.dragging = true;
 		this.cacheHelperSize();
 		this.cacheHelperAttrs();
-		this.startEvent = sensorEvent;
 		this.position.absolute = offset(this.element);
 		this.calculateOffsets(sensorEvent);
 		this.calculatePosition(sensorEvent, false);
@@ -510,10 +511,10 @@ export default class Draggable {
 
 	cacheMargins() {
 		this.margins = {
-			left: parseInt(style(this.element, 'marginLeft'), 10) || 0,
-			top: parseInt(style(this.element, 'marginTop'), 10) || 0,
-			right: parseInt(style(this.element, 'marginRight'), 10) || 0,
-			bottom: parseInt(style(this.element, 'marginBottom'), 10) || 0
+			left: styleAsNumber(this.element, 'marginLeft') || 0,
+			top: styleAsNumber(this.element, 'marginTop') || 0,
+			right: styleAsNumber(this.element, 'marginRight') || 0,
+			bottom: styleAsNumber(this.element, 'marginBottom') || 0
 		};
 	}
 
@@ -559,8 +560,8 @@ export default class Draggable {
 		}
 
 		return {
-			left: result.left + parseInt(style(offsetParent, 'borderLeftWidth'), 10) || 0,
-			top: result.top + parseInt(style(offsetParent, 'borderTopWidth'), 10) || 0
+			left: result.left + styleAsNumber(offsetParent, 'borderLeftWidth') || 0,
+			top: result.top + styleAsNumber(offsetParent, 'borderTopWidth') || 0
 		};
 	}
 
@@ -578,8 +579,8 @@ export default class Draggable {
 		const scrollIsRoot = scrollParent ? isRoot(scrollParent) : false;
 
 		return {
-			left: result.left - (parseInt(style(this.helper, 'left'), 10) || 0) + (scrollIsRoot ? scrollLeft(scrollParent) : 0),
-			top: result.top - (parseInt(style(this.helper, 'top'), 10) || 0) + (scrollIsRoot ? scrollTop(scrollParent) : 0)
+			left: result.left - (styleAsNumber(this.helper, 'left') || 0) + (scrollIsRoot ? scrollLeft(scrollParent) : 0),
+			top: result.top - (styleAsNumber(this.helper, 'top') || 0) + (scrollIsRoot ? scrollTop(scrollParent) : 0)
 		};
 	}
 
@@ -656,10 +657,10 @@ export default class Draggable {
 			}
 			this.cancelHelperRemoval = false;
 			this.helper = null;
-			if (this.pendingDestroy) {
-				this.destroy();
-				this.pendingDestroy = false;
-			}
+		}
+		if (this.pendingDestroy) {
+			this.destroy();
+			this.pendingDestroy = false;
 		}
 	}
 }

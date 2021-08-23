@@ -1,15 +1,18 @@
 import { offset } from 'dom-helpers';
-
 import Plugin from './plugin';
 
-export default class GridConstraint extends Plugin {
-	constructor(draggable) {
-		super(draggable);
+export default class DragGridConstraint extends Plugin {
+	constructor(container) {
+		super(container);
 		this.attach();
 	}
 
+	get supported() {
+		return this.isDraggable() || this.isSortable();
+	}
+
 	get grid() {
-		const { options } = this.draggable;
+		const { options } = this.container;
 
 		return Array.isArray(options.grid) && options.grid.length === 2 ? options.grid : null;
 	}
@@ -18,8 +21,8 @@ export default class GridConstraint extends Plugin {
 		if (this.grid) {
 			let xMin, xMax, yMin, yMax;
 			const [x, y] = this.grid;
-			const { containmentCoords, containmentContainer, startEvent } = this.draggable;
-			const { click } = this.draggable.offset;
+			const { containmentCoords, containmentContainer, startEvent } = this.container;
+			const { click } = this.container.offset;
 
 			if (containmentCoords) {
 				[xMin, yMin, xMax, yMax] = containmentCoords;

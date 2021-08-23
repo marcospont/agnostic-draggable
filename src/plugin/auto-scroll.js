@@ -1,5 +1,4 @@
 import { offset, scrollLeft, scrollTop } from 'dom-helpers';
-
 import DragDropManager from '../manager';
 import Plugin from './plugin';
 import { isRoot } from '../util';
@@ -9,13 +8,17 @@ export default class AutoScroll extends Plugin {
 
 	scrollParentOffset = null;
 
-	constructor(draggable) {
-		super(draggable);
+	constructor(container) {
+		super(container);
 		this.attach();
 	}
 
+	get supported() {
+		return this.isDraggable() || this.isSortable();
+	}
+
 	get scroll() {
-		const { options } = this.draggable;
+		const { options } = this.container;
 
 		return options.scroll;
 	}
@@ -25,7 +28,7 @@ export default class AutoScroll extends Plugin {
 			return;
 		}
 
-		const { helperAttrs } = this.draggable;
+		const { helperAttrs } = this.container;
 
 		if (!this.scrollParent) {
 			this.scrollParent = helperAttrs.scrollParent;
@@ -43,9 +46,9 @@ export default class AutoScroll extends Plugin {
 		let scrolled = false;
 		const { sensorEvent } = event;
 		const { scrollParent, scrollParentOffset } = this;
-		const { helperSize } = this.draggable;
-		const { click } = this.draggable.offset;
-		const { axis, scrollSensitivity, scrollSpeed } = this.draggable.options;
+		const { helperSize } = this.container;
+		const { click } = this.container.offset;
+		const { axis, scrollSensitivity, scrollSpeed } = this.container.options;
 		const pos = {
 			x: sensorEvent.pageX - click.left - (isRoot(this.scrollParent, false) ? scrollLeft(document) : 0),
 			y: sensorEvent.pageY - click.top - (isRoot(this.scrollParent, false) ? scrollTop(document) : 0)
@@ -91,7 +94,7 @@ export default class AutoScroll extends Plugin {
 			}
 		}
 		if (scrolled) {
-			DragDropManager.prepareOffsets(this.draggable, sensorEvent);
+			DragDropManager.prepareOffsets(this.container, sensorEvent);
 		}
 	};
 }
