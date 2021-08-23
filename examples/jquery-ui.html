@@ -6,8 +6,13 @@
 		<title>jQuery UI Sortable - Portlets</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 		<style type="text/css">
+			* {
+				box-sizing: border-box;
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+
 			body {
-				padding: 50px;
+				padding: 30px 50px;
 			}
 
 			.scrollable {
@@ -26,17 +31,20 @@
 			.draggable {
 				display: inline-block;
 				border: 1px solid #000;
-				background-color: #fff;
+				border-radius: 5px;
+				background-color: #4338ca;
+				color: #fff;
 				padding: 20px;
-				width: 40px;
-				height: 40px;
+				width: 80px;
+				height: 80px;
 				cursor: pointer;
 			}
 
 			.droppable {
 				display: block;
 				border: 1px solid #000;
-				background-color: #fff;
+				background-color: #374151;
+				color: #fff;
 				margin-top: 20px;
 				margin-bottom: 30px;
 				padding: 20px;
@@ -61,20 +69,47 @@
 				padding: 0;
 				list-style: none;
 			}
-			.sortable li {
+			.sortable li:not(.ui-sortable-helper) {
 				display: block;
 				border: 1px solid #000;
-				background-color: #fff;
+				background-color: #4338ca;
+				color: #fff;
+				padding: 10px;
+				width: 220px;
+				height: 40px;
+				cursor: pointer;
+			}
+			.sortable li.ui-sortable-helper {
+				display: block;
+				border: 1px solid #000;
+				background-color: #4338ca;
+				color: #fff;
+				padding: 10px;
+			}
+
+			.resizable-container {
+				width: 800px;
+				height: 180px;
+				margin-top: 30px;
+				border: 1px solid #000;
+			}
+
+			.resizable {
+				display: block;
+				border: 1px solid #000;
+				background-color: #4338ca;
+				color: #fff;
 				padding: 10px;
 				width: 200px;
-				height: 20px;
-				cursor: pointer;
+				height: 100px;
 			}
 		</style>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
 	</head>
 	<body>
+		<h2>Examples - jQuery UI</h2>
 		<div class="scrollable">
 			<div class="container">
 				<div id="drag1" class="draggable">
@@ -94,7 +129,7 @@
 				</div>
 				<div id="drop1" class="droppable">Drop Here!</div>
 				<div class="column">
-					<ul class="sortable">
+					<ul id="sort1" class="sortable">
 						<li>
 							<span>Sort Me 1!</span>
 						</li>
@@ -116,7 +151,7 @@
 					</ul>
 				</div>
 				<div class="column">
-					<ul class="sortable">
+					<ul id="sort2" class="sortable">
 						<li>
 							<span>Sort Me 1!</span>
 						</li>
@@ -137,6 +172,9 @@
 						</li>
 					</ul>
 				</div>
+				<div class="resizable-container">
+					<div id="resize1" class="resizable">Resize Me!</div>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -146,17 +184,26 @@
 				containment: 'parent',
 				cursor: 'move',
 				distance: 10,
-				handle: '.handle',
 				helper: 'original',
+				opacity: 0.5,
 				stack: '.draggable'
 			});
 			$('.droppable').droppable();
 			$('.sortable').sortable({
 				connectWith: '.sortable',
 				cursor: 'move',
+				helper: 'clone',
 				opacity: 0.5,
 				distance: 10,
-				helper: 'clone'
+				forceHelperSize: true,
+				hidePlaceholder: true
+			});
+			$('.resizable').resizable({
+				autoHide: true,
+				distance: 10,
+				containment: 'parent',
+				minWidth: 120,
+				minHeight: 40
 			});
 		</script>
 	</body>

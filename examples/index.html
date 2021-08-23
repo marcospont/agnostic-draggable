@@ -5,10 +5,11 @@
 		<style type="text/css">
 			* {
 				box-sizing: border-box;
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 			}
-		
+
 			body {
-				padding: 50px;
+				padding: 30px 50px;
 			}
 
 			.scrollable {
@@ -27,7 +28,9 @@
 			.draggable {
 				display: inline-block;
 				border: 1px solid #000;
-				background-color: #fff;
+				border-radius: 5px;
+				background-color: #4338ca;
+				color: #fff;
 				padding: 20px;
 				width: 80px;
 				height: 80px;
@@ -37,7 +40,8 @@
 			.droppable {
 				display: block;
 				border: 1px solid #000;
-				background-color: #fff;
+				background-color: #374151;
+				color: #fff;
 				margin-top: 20px;
 				margin-bottom: 30px;
 				padding: 20px;
@@ -65,7 +69,8 @@
 			.sortable li:not(.ui-sortable-helper) {
 				display: block;
 				border: 1px solid #000;
-				background-color: #fff;
+				background-color: #4338ca;
+				color: #fff;
 				padding: 10px;
 				width: 220px;
 				height: 40px;
@@ -74,13 +79,32 @@
 			.sortable li.ui-sortable-helper {
 				display: block;
 				border: 1px solid #000;
-				background-color: #fff;
+				background-color: #4338ca;
+				color: #fff;
 				padding: 10px;
+			}
+
+			.resizable-container {
+				width: 800px;
+				height: 180px;
+				margin-top: 30px;
+				border: 1px solid #000;
+			}
+
+			.resizable {
+				display: block;
+				border: 1px solid #000;
+				background-color: #4338ca;
+				color: #fff;
+				padding: 10px;
+				width: 200px;
+				height: 100px;
 			}
 		</style>
 		<script type="text/javascript" src="../dist/agnostic-draggable.js"></script>
 	</head>
 	<body>
+		<h2>Examples - Agnostic Draggable</h2>
 		<div class="scrollable">
 			<div class="container">
 				<div id="drag1" class="draggable">
@@ -143,6 +167,9 @@
 						</li>
 					</ul>
 				</div>
+				<div class="resizable-container">
+					<div id="resize1" class="resizable">Resize Me!</div>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -168,6 +195,15 @@
 					distance: 10,
 					forceHelperSize: true,
 					hidePlaceholder: true
+				});
+			});
+			document.querySelectorAll('.resizable').forEach(function (element) {
+				new agnosticDraggable.Resizable(element, {
+					autoHide: true,
+					distance: 10,
+					containment: 'parent',
+					minWidth: 120,
+					minHeight: 40
 				});
 			});
 		</script>
