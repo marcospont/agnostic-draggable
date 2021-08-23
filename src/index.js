@@ -4,8 +4,9 @@ import { Draggable } from './draggable';
 import Droppable from './droppable';
 import DragDropManager from './manager';
 import Sortable from './sortable';
+import Resizable from './resizable';
 
-export { Plugin, Sensor, Draggable, Droppable, DragDropManager, Sortable };
+export { Plugin, Sensor, Draggable, Droppable, DragDropManager, Sortable, Resizable };
 
 export default {
 	Plugin,
@@ -13,5 +14,6 @@ export default {
 	Draggable,
 	Droppable,
 	DragDropManager,
-	Sortable
+	Sortable,
+	Resizable
 };

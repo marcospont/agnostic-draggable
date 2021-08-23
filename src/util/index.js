@@ -1,4 +1,8 @@
-import { activeElement, contains, matches, style } from 'dom-helpers';
+import { activeElement, addEventListener, attribute, contains, matches, style } from 'dom-helpers';
+import { injectGlobal } from '@emotion/css';
+import forEach from 'lodash/forEach';
+import isPlainObject from 'lodash/isPlainObject';
+import kebabCase from 'lodash/kebabCase';
 import { MouseStopEvent } from '../sensor/mouse-event';
 
 const toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
@@ -20,6 +24,16 @@ const hide = element => {
 			display: 'none'
 		});
 	}
+};
+
+const disableSelection = element => {
+	if (element) {
+		const eventName = 'onselectstart' in document.createElement('div') ? 'selectstart' : 'mousedown';
+
+		return addEventListener(element, eventName, event => event.preventDefault());
+	}
+
+	return null;
 };
 
 const getParents = (element, until = null) => {
@@ -86,6 +100,26 @@ const insertAfter = (element, reference) => {
 	return element;
 };
 
+const createElement = (tag, attrs = null, parent = null, contents = null) => {
+	const node = document.createElement(tag);
+
+	if (isPlainObject(attrs)) {
+		forEach(attrs, (value, name) => {
+			attribute(node, name, value);
+		});
+	}
+
+	if (parent && parent.nodeType === 1) {
+		parent.appendChild(node);
+	}
+
+	if (contents) {
+		node.innerHTML = contents;
+	}
+
+	return node;
+};
+
 const createMouseStopEvent = target =>
 	new MouseStopEvent({
 		target,
@@ -119,6 +153,21 @@ const blurActiveElement = event => {
 };
 
 const isFloating = element => /(left|right)/.test(style(element, 'float') || /(inline|table-cell)/.test(style(element, 'display')));
+
+const getPaddingAndBorder = element => {
+	const dimensions = [];
+	const borders = [style(element, 'borderTop'), style(element, 'borderRight'), style(element, 'borderBottom'), style(element, 'borderLeft')];
+	const paddings = [style(element, 'paddingTop'), style(element, 'paddingRight'), style(element, 'paddingBottom'), style(element, 'paddingLeft')];
+
+	for (let i = 0; i < 4; i++) {
+		dimensions[i] = (parseFloat(borders[i]) || 0) + (parseFloat(paddings[i]) || 0);
+	}
+
+	return {
+		width: dimensions[1] + dimensions[3],
+		height: dimensions[0] + dimensions[2]
+	};
+};
 
 const setPositionRelative = element => {
 	const pos = style(element, 'position');
@@ -193,48 +242,67 @@ const intersect = (source, target, tolerance, event) => {
 const isRoot = (element, includeBody = true) =>
 	element === document || element === document.documentElement || (includeBody && element === document.body);
 
+const injectStyles = (className, rules) => {
+	const buffer = [`.${className} {`];
+
+	forEach(rules, (value, name) => {
+		buffer.push(`${kebabCase(name)}: ${value};`);
+	});
+
+	buffer.push('}');
+	injectGlobal(buffer.join('\n'));
+};
+
 export {
 	toArray,
 	show,
 	hide,
+	disableSelection,
 	getParents,
 	getSibling,
 	getChildIndex,
 	containsStrict as contains,
 	insertBefore,
 	insertAfter,
+	createElement,
 	createMouseStopEvent,
 	createEvent,
 	triggerEvent,
 	blurActiveElement,
 	isFloating,
+	getPaddingAndBorder,
 	setPositionRelative,
 	setPositionAbsolute,
 	styleAsNumber,
 	scrollParent,
 	intersect,
-	isRoot
+	isRoot,
+	injectStyles
 };
 
 export default {
 	toArray,
 	show,
 	hide,
+	disableSelection,
 	getParents,
 	getSibling,
 	getChildIndex,
 	contains: containsStrict,
 	insertBefore,
 	insertAfter,
+	createElement,
 	createMouseStopEvent,
 	createEvent,
 	triggerEvent,
 	blurActiveElement,
 	isFloating,
+	getPaddingAndBorder,
 	setPositionRelative,
 	setPositionAbsolute,
 	styleAsNumber,
 	scrollParent,
 	intersect,
-	isRoot
+	isRoot,
+	injectStyles
 };
