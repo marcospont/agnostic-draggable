@@ -24,4 +24,12 @@ export default class SensorEvent extends AbstractEvent {
 	get originalEvent() {
 		return this.data.originalEvent || null;
 	}
+
+	preventDefault() {
+		this.originalEvent?.preventDefault();
+	}
+
+	stopPropagation() {
+		this.originalEvent?.stopPropagation();
+	}
 }
