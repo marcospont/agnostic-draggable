@@ -1,3 +1,4 @@
+/* global MouseEvent */
 import { activeElement, attribute, contains, listen, matches, style } from 'dom-helpers';
 import { injectGlobal } from '@emotion/css';
 import forEach from 'lodash/forEach';
@@ -123,16 +124,28 @@ const createElement = (tag, attrs = null, parent = null, contents = null) => {
 const createMouseStopEvent = target =>
 	new MouseStopEvent({
 		target,
-		originalEvent: createEvent('mouseup', target)
+		originalEvent: createMouseEvent('mouseup', target)
 	});
 
-const createEvent = (type, target) => {
-	const event = document.createEvent('HTMLEvents');
+const createMouseEvent = (type, target) => {
+	const eventOptions = {
+		button: 0,
+		bubbles: true,
+		cancelable: true,
+		ctrlKey: false,
+		altKey: false,
+		shiftKey: false,
+		metaKey: false,
+		clientX: 1,
+		clientY: 1,
+		screenX: 0,
+		screenY: 0,
+		view: document.defaultView,
+		target,
+		relatedTarget: document.documentElement
+	};
 
-	event.initEvent(type, false, true);
-	event.target = target;
-
-	return event;
+	return new MouseEvent('mouseup', eventOptions);
 };
 
 const triggerEvent = (element, type) => {
@@ -266,7 +279,7 @@ export {
 	insertAfter,
 	createElement,
 	createMouseStopEvent,
-	createEvent,
+	createMouseEvent,
 	triggerEvent,
 	blurActiveElement,
 	isFloating,
@@ -293,7 +306,7 @@ export default {
 	insertAfter,
 	createElement,
 	createMouseStopEvent,
-	createEvent,
+	createMouseEvent,
 	triggerEvent,
 	blurActiveElement,
 	isFloating,
