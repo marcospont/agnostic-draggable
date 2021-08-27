@@ -1,4 +1,4 @@
-import { activeElement, addEventListener, attribute, contains, matches, style } from 'dom-helpers';
+import { activeElement, attribute, contains, listen, matches, style } from 'dom-helpers';
 import { injectGlobal } from '@emotion/css';
 import forEach from 'lodash/forEach';
 import isPlainObject from 'lodash/isPlainObject';
@@ -30,7 +30,7 @@ const disableSelection = element => {
 	if (element) {
 		const eventName = 'onselectstart' in document.createElement('div') ? 'selectstart' : 'mousedown';
 
-		return addEventListener(element, eventName, event => event.preventDefault());
+		return listen(element, eventName, event => event.preventDefault());
 	}
 
 	return null;

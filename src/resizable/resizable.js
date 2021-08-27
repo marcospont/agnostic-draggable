@@ -1,4 +1,4 @@
-import { addClass, addEventListener, width, height, offset, remove, removeClass, style, isInput } from 'dom-helpers';
+import { addClass, width, height, listen, offset, remove, removeClass, style, isInput } from 'dom-helpers';
 import isFinite from 'lodash/isFinite';
 import isString from 'lodash/isString';
 import Draggable from '../draggable/draggable';
@@ -202,7 +202,7 @@ export default class Resizable extends Draggable {
 		if (autoHide) {
 			addClass(this.element, this.autoHideClass);
 			this.listeners.push(
-				addEventListener(this.element, 'mouseenter', () => {
+				listen(this.element, 'mouseenter', () => {
 					if (!this.disabled) {
 						removeClass(this.element, this.autoHideClass);
 						this.handleElements.forEach(h => show(h));
@@ -210,7 +210,7 @@ export default class Resizable extends Draggable {
 				})
 			);
 			this.listeners.push(
-				addEventListener(this.element, 'mouseleave', () => {
+				listen(this.element, 'mouseleave', () => {
 					if (!this.disabled && !this.resizing) {
 						addClass(this.element, this.autoHideClass);
 						this.handleElements.forEach(h => hide(h));
@@ -452,7 +452,7 @@ export default class Resizable extends Draggable {
 					zIndex: zIndex + (dir.length === 2 ? 1 : 0)
 				});
 				this.listeners.push(
-					addEventListener(handleEl, 'mouseover', e => {
+					listen(handleEl, 'mouseover', e => {
 						if (!this.pressing) {
 							this.currentHandle = e.target;
 							this.currentDirection = e.target[this.handleDirectionProperty];
