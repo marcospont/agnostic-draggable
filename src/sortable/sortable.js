@@ -251,8 +251,7 @@ export default class Sortable extends Draggable {
 
 		this.trigger(sortStart);
 		if (sortStart.canceled) {
-			sensorEvent.cancel();
-			this.clear();
+			this.onDragCancel(createMouseStopEvent(this.helper));
 			return;
 		}
 
@@ -279,6 +278,18 @@ export default class Sortable extends Draggable {
 		);
 	};
 
+	onDragCancel = event => {
+		const sensorEvent = event.detail;
+
+		this.scrollListeners.forEach(listener => listener());
+		this.scrollListeners = [];
+
+		DragDropManager.onDragStop(this, sensorEvent);
+
+		this.sensors.forEach(sensor => sensor.cancel(event));
+		this.clear();
+	};
+
 	onDragMove = (event, noPropagation = false, forceOwnership = false) => {
 		const sensorEvent = event.detail;
 
@@ -302,7 +313,6 @@ export default class Sortable extends Draggable {
 
 			this.trigger(sortMove);
 			if (sortMove.canceled) {
-				this.onDragCancel(createMouseStopEvent(this.helper));
 				return;
 			}
 		}
@@ -349,17 +359,6 @@ export default class Sortable extends Draggable {
 		this.previousPosition = this.position.absolute;
 	};
 
-	onDragCancel = event => {
-		const sensorEvent = event.detail;
-
-		this.scrollListeners.forEach(listener => listener());
-		this.scrollListeners = [];
-
-		DragDropManager.onDragStop(this, sensorEvent);
-
-		this.sensors.forEach(sensor => sensor.cancel(event));
-	};
-
 	onDragStop = (event, forceOwnership = false) => {
 		const sensorEvent = event.detail;
 
@@ -402,6 +401,7 @@ export default class Sortable extends Draggable {
 		} else {
 			this.trigger(sortStop);
 			if (!sortStop.canceled) {
+				this.applyChanges();
 				this.clear();
 			}
 		}
@@ -908,7 +908,7 @@ export default class Sortable extends Draggable {
 		});
 	}
 
-	clear() {
+	applyChanges() {
 		let newIndex = null;
 
 		if (this.helper && this.currentItem) {
@@ -995,6 +995,9 @@ export default class Sortable extends Draggable {
 				})
 			);
 		});
+	}
+
+	clear() {
 		if (this.placeholder) {
 			if (this.placeholder.parentNode) {
 				this.placeholder.parentNode.removeChild(this.placeholder);

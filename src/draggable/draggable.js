@@ -317,8 +317,7 @@ export default class Draggable {
 
 		this.trigger(dragStart);
 		if (dragStart.canceled) {
-			sensorEvent.cancel();
-			this.clear();
+			this.onDragCancel(createMouseStopEvent(this.helper));
 			return;
 		}
 
@@ -331,6 +330,22 @@ export default class Draggable {
 		this.scrollListeners = getParents(this.element, 'body').map(parent =>
 			listen(parent, 'scroll', () => DragDropManager.prepareOffsets(this, event))
 		);
+	};
+
+	onDragCancel = event => {
+		const sensorEvent = event.detail;
+
+		this.scrollListeners.forEach(listener => listener());
+		this.scrollListeners = [];
+
+		DragDropManager.onDragStop(this, sensorEvent);
+
+		if (this.findHandles().some(handle => handle === sensorEvent.target)) {
+			triggerEvent(this.element, 'focus');
+		}
+
+		this.sensors.forEach(sensor => sensor.cancel(event));
+		this.clear();
 	};
 
 	onDragMove = (event, noPropagation = false) => {
@@ -366,7 +381,6 @@ export default class Draggable {
 			});
 		}
 		if (dragMove.canceled) {
-			this.onDragCancel(createMouseStopEvent(this.helper));
 			return;
 		} else {
 			this.position.current = dragMove.position;
@@ -378,21 +392,6 @@ export default class Draggable {
 		});
 
 		DragDropManager.onDragMove(this, sensorEvent);
-	};
-
-	onDragCancel = event => {
-		const sensorEvent = event.detail;
-
-		this.scrollListeners.forEach(listener => listener());
-		this.scrollListeners = [];
-
-		DragDropManager.onDragStop(this, sensorEvent);
-
-		if (this.findHandles().some(handle => handle === sensorEvent.target)) {
-			triggerEvent(this.element, 'focus');
-		}
-
-		this.sensors.forEach(sensor => sensor.cancel(event));
 	};
 
 	onDragStop = event => {

@@ -269,8 +269,7 @@ export default class Resizable extends Draggable {
 
 		this.trigger(resizeStart);
 		if (resizeStart.canceled) {
-			sensorEvent.cancel();
-			this.clear();
+			this.onDragCancel(createMouseStopEvent(this.helper));
 			return;
 		}
 
@@ -279,6 +278,11 @@ export default class Resizable extends Draggable {
 		style(document.body, {
 			cursor: !handleCursor || handleCursor === 'auto' ? `${this.elementClass}-${this.currentDirection}` : handleCursor
 		});
+	};
+
+	onDragCancel = event => {
+		this.sensors.forEach(sensor => sensor.cancel(event));
+		this.clear();
 	};
 
 	onDragMove = event => {
@@ -307,7 +311,6 @@ export default class Resizable extends Draggable {
 		});
 		this.trigger(resizeChange);
 		if (resizeChange.canceled) {
-			this.onDragCancel(createMouseStopEvent(this.helper));
 			return;
 		} else {
 			this.currentAttrs.size = { ...resizeChange.size };
@@ -318,11 +321,6 @@ export default class Resizable extends Draggable {
 		if (this.helper === this.element) {
 			this.updateResizableElements();
 		}
-	};
-
-	onDragCancel = event => {
-		this.sensors.forEach(sensor => sensor.cancel(event));
-		this.clear();
 	};
 
 	onDragStop = event => {
@@ -666,8 +664,6 @@ export default class Resizable extends Draggable {
 	clear() {
 		this.pressing = false;
 		this.resizing = false;
-		this.currentHandle = null;
-		this.currentDirection = null;
 		this.originalAttrs = {};
 		this.currentAttrs = {};
 		this.previousAttrs = {};
