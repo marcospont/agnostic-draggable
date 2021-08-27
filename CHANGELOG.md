@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/marcospont/agnostic-draggable/compare/v1.3.1...v1.4.0) (2021-08-27)
+
+
+### Features
+
+* added proxy methods to prevent default and stop propagation using the original event ([053f7b3](https://github.com/marcospont/agnostic-draggable/commit/053f7b3ec9cd27e8ae9dba27f98169c65ca8afed))
+
+
+### Bug Fixes
+
+* stop propagation of events being cancelled ([84285f6](https://github.com/marcospont/agnostic-draggable/commit/84285f6e870baf2ddc3f6a864941969c215bc80b))
+* trigger mouse stop when cancelling a start event but not when cancelling a move event ([db17595](https://github.com/marcospont/agnostic-draggable/commit/db17595b8fcb9b34aaabfa97b44af6ce1b008206))
+* use the mouse event api to create events ([44fa75d](https://github.com/marcospont/agnostic-draggable/commit/44fa75d033df760325c1c273ed7a0d0201d2fef0))
+
 ### [1.3.1](https://github.com/marcospont/agnostic-draggable/compare/v1.3.0...v1.3.1) (2021-08-27)
 
 
