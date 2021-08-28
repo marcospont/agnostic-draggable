@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/marcospont/agnostic-draggable/compare/v1.4.0...v1.4.1) (2021-08-28)
+
+
+### Bug Fixes
+
+* revert calling stop propagation, avoid error conditions during resize start ([af36122](https://github.com/marcospont/agnostic-draggable/commit/af361229efd7db8772a3e189f83ba6e6d7fca583))
+
 ## [1.4.0](https://github.com/marcospont/agnostic-draggable/compare/v1.3.1...v1.4.0) (2021-08-27)
 
 
