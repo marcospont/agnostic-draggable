@@ -61,7 +61,6 @@ export default class MouseSensor extends Sensor {
 		document.addEventListener('dragstart', preventDefault);
 		document.addEventListener('mousemove', this.checkThresholds);
 		document.addEventListener('mouseup', this.onMouseUp);
-		event.preventDefault();
 	};
 
 	checkThresholds = event => {
@@ -116,7 +115,6 @@ export default class MouseSensor extends Sensor {
 		document.removeEventListener('dragstart', preventDefault);
 		document.removeEventListener('mousemove', this.checkThresholds);
 		document.removeEventListener('mouseup', this.onMouseUp);
-
 		if (this.active) {
 			this.active = false;
 			this.trigger(
@@ -129,10 +127,8 @@ export default class MouseSensor extends Sensor {
 				})
 			);
 		}
-
 		document.removeEventListener('contextmenu', preventDefault);
 		document.removeEventListener('mousemove', this.onMouseMove);
 		event.preventDefault();
-		event.stopPropagation();
 	};
 }

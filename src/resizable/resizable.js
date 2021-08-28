@@ -231,7 +231,7 @@ export default class Resizable extends Draggable {
 		const { aspectRatio } = this.options;
 		const sensorEvent = event.detail;
 
-		if (sensorEvent.caller !== this) {
+		if (sensorEvent.caller !== this || !this.currentHandle || !this.currentDirection) {
 			return;
 		}
 
