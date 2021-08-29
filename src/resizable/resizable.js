@@ -181,6 +181,9 @@ export default class Resizable extends Draggable {
 		document.addEventListener('mouse:down', () => {
 			this.pressing = true;
 		});
+		document.addEventListener('mouse:stop', () => {
+			this.pressing = false;
+		});
 		document.addEventListener('mouse:start', this.onDragStart);
 		document.addEventListener('mouse:move', this.onDragMove);
 		document.addEventListener('mouse:stop', this.onDragStop);
@@ -288,7 +291,7 @@ export default class Resizable extends Draggable {
 	onDragMove = event => {
 		const sensorEvent = event.detail;
 
-		if (sensorEvent.caller !== this) {
+		if (sensorEvent.caller !== this || !this.currentHandle || !this.currentDirection) {
 			return;
 		}
 
@@ -330,7 +333,7 @@ export default class Resizable extends Draggable {
 		const { size, position } = this.currentAttrs;
 		const sensorEvent = event.detail;
 
-		if (sensorEvent.caller !== this) {
+		if (sensorEvent.caller !== this || !this.currentHandle || !this.currentDirection) {
 			return;
 		}
 
@@ -662,7 +665,6 @@ export default class Resizable extends Draggable {
 	}
 
 	clear() {
-		this.pressing = false;
 		this.resizing = false;
 		this.originalAttrs = {};
 		this.currentAttrs = {};
