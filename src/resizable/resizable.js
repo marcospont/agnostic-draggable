@@ -120,9 +120,11 @@ export default class Resizable extends Draggable {
 		} else {
 			delete this.element[this.dataProperty];
 		}
-		style(this.originalElement, {
-			resize: this.originalResize
-		});
+		if (this.originalElement && this.originalResize) {
+			style(this.originalElement, {
+				resize: this.originalResize
+			});
+		}
 
 		this.destroyHandles();
 		this.listeners.forEach(listener => listener());
