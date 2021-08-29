@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/marcospont/agnostic-draggable/compare/v1.4.1...v1.4.2) (2021-08-29)
+
+
+### Bug Fixes
+
+* **resizable:** ensure pressing flag is always turned off ([32bc49e](https://github.com/marcospont/agnostic-draggable/commit/32bc49ec444d25753030f111097533d6fa3ce15b))
+
 ### [1.4.1](https://github.com/marcospont/agnostic-draggable/compare/v1.4.0...v1.4.1) (2021-08-28)
 
 
