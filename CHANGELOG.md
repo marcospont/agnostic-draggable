@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/marcospont/agnostic-draggable/compare/v1.4.2...v1.4.3) (2021-08-29)
+
+
+### Bug Fixes
+
+* prevent unwanted condition when destroying a resizable instance ([b3121fc](https://github.com/marcospont/agnostic-draggable/commit/b3121fcbd67aab0e5468e05c8eaa67ef72a8f7d7))
+
 ### [1.4.2](https://github.com/marcospont/agnostic-draggable/compare/v1.4.1...v1.4.2) (2021-08-29)
 
 
