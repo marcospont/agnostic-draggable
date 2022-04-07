@@ -45,18 +45,21 @@ export default class MouseSensor extends Sensor {
 			this.onMouseUp(event);
 		}
 
+		const mouseDown = new MouseDownEvent({
+			pageX: event.pageX,
+			pageY: event.pageY,
+			target: event.target,
+			caller: this.caller,
+			originalEvent: event
+		});
+
 		this.pageX = event.pageX;
 		this.pageY = event.pageY;
 		this.startEvent = event;
-		this.trigger(
-			new MouseDownEvent({
-				pageX: event.pageX,
-				pageY: event.pageY,
-				target: event.target,
-				caller: this.caller,
-				originalEvent: event
-			})
-		);
+		this.trigger(mouseDown);
+		if (mouseDown.canceled) {
+			return;
+		}
 
 		document.addEventListener('dragstart', preventDefault);
 		document.addEventListener('mousemove', this.checkThresholds);

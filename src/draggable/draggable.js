@@ -251,6 +251,7 @@ export default class Draggable {
 		this.addPlugin(new AutoScroll(this));
 		this.addPlugin(new ConnectToSortable(this));
 		this.addSensor(new MouseSensor(this));
+		document.addEventListener('mouse:down', this.onMouseDown);
 		document.addEventListener('mouse:start', this.onDragStart);
 		document.addEventListener('mouse:move', this.onDragMove);
 		document.addEventListener('mouse:stop', this.onDragStop);
@@ -272,20 +273,26 @@ export default class Draggable {
 		);
 	};
 
-	onDragStart = event => {
+	onMouseDown = event => {
 		const sensorEvent = event.detail;
 
 		if (sensorEvent.caller !== this) {
 			return;
 		}
-
 		if (this.disabled || this.reverting) {
 			sensorEvent.cancel();
 			return;
 		}
-
 		if (!this.isInsideHandle(sensorEvent)) {
 			sensorEvent.cancel();
+			return;
+		}
+	};
+
+	onDragStart = event => {
+		const sensorEvent = event.detail;
+
+		if (sensorEvent.caller !== this) {
 			return;
 		}
 

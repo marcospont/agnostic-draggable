@@ -171,6 +171,7 @@ export default class Sortable extends Draggable {
 		this.addPlugin(new StyleDecorator(this, 'zIndex'));
 		this.addPlugin(new AutoScroll(this));
 		this.addSensor(new MouseSensor(this));
+		document.addEventListener('mouse:down', this.onMouseDown);
 		document.addEventListener('mouse:start', this.onDragStart);
 		document.addEventListener('mouse:move', this.onDragMove);
 		document.addEventListener('mouse:stop', this.onDragStop);
@@ -185,6 +186,23 @@ export default class Sortable extends Draggable {
 				sortable: this
 			})
 		);
+	};
+
+	onMouseDown = event => {
+		const sensorEvent = event.detail;
+
+		if (sensorEvent.caller !== this) {
+			return;
+		}
+
+		if (this.disabled || this.reverting) {
+			sensorEvent.cancel();
+			return;
+		}
+
+		if (!this.findItem(sensorEvent)) {
+			sensorEvent.cancel();
+		}
 	};
 
 	onDragStart = (event, noActivation = false, forceOwnership = false) => {

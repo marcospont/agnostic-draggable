@@ -180,9 +180,7 @@ export default class Resizable extends Draggable {
 		this.addPlugin(new ResizeAnimate(this));
 		this.addPlugin(new ResizeGhost(this));
 		this.addSensor(new MouseSensor(this));
-		document.addEventListener('mouse:down', () => {
-			this.pressing = true;
-		});
+		document.addEventListener('mouse:down', this.onMouseDown);
 		document.addEventListener('mouse:stop', () => {
 			this.pressing = false;
 		});
@@ -231,22 +229,29 @@ export default class Resizable extends Draggable {
 		);
 	};
 
+	onMouseDown = event => {
+		const sensorEvent = event.detail;
+
+		if (sensorEvent.caller !== this || !this.currentHandle || !this.currentDirection) {
+			return;
+		}
+		if (this.disabled) {
+			sensorEvent.cancel();
+			return;
+		}
+		if (!this.isInsideHandle(sensorEvent)) {
+			sensorEvent.cancel();
+			return;
+		}
+		this.pressing = true;
+	};
+
 	onDragStart = event => {
 		let handleCursor = null;
 		const { aspectRatio } = this.options;
 		const sensorEvent = event.detail;
 
 		if (sensorEvent.caller !== this || !this.currentHandle || !this.currentDirection) {
-			return;
-		}
-
-		if (this.disabled) {
-			sensorEvent.cancel();
-			return;
-		}
-
-		if (!this.isInsideHandle(sensorEvent)) {
-			sensorEvent.cancel();
 			return;
 		}
 
