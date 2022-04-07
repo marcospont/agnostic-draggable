@@ -600,12 +600,14 @@ export default class Sortable extends Draggable {
 			}
 			if (!helperNode.style.width || forceHelperSize) {
 				style(helperNode, {
-					width: width(this.currentItem) + 'px'
+					width: width(this.currentItem) + 'px',
+					boxSizing: 'border-box'
 				});
 			}
 			if (!helperNode.style.height || forceHelperSize) {
 				style(helperNode, {
-					height: height(this.currentItem) + 'px'
+					height: height(this.currentItem) + 'px',
+					boxSizing: 'border-box'
 				});
 			}
 
