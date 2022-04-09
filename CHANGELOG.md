@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.4](https://github.com/marcospont/agnostic-draggable/compare/v1.4.3...v1.4.4) (2022-04-09)
+
+
+### Bug Fixes
+
+* force border box sizing when resizing the sortable helper ([586cb85](https://github.com/marcospont/agnostic-draggable/commit/586cb85aac63e56d3956975afed547b49b89a40a))
+* text selection wasn't working for non draggable, sortable or resizable elements ([2fba742](https://github.com/marcospont/agnostic-draggable/commit/2fba742a9f143cb283afd2d82ae82694e8b198ea))
+
 ### [1.4.3](https://github.com/marcospont/agnostic-draggable/compare/v1.4.2...v1.4.3) (2021-08-29)
 
 
