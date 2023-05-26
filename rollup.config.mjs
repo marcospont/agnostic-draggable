@@ -35,7 +35,8 @@ export default [
 				'process.env.NODE_ENV': JSON.stringify('production'),
 				preventAssignment: true
 			})
-		]
+		],
+		strictDeprecations: true
 	},
 	{
 		input: 'src/index.js',
@@ -67,6 +68,7 @@ export default [
 				'process.env.NODE_ENV': JSON.stringify('production'),
 				preventAssignment: true
 			})
-		]
+		],
+		strictDeprecations: true
 	}
 ];
