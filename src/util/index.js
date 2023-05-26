@@ -10,20 +10,20 @@ const toArray = Function.prototype.bind.call(Function.prototype.call, [].slice);
 
 const show = element => {
 	if (element) {
-		const previous = element.previousDisplay || null;
-
-		style(element, {
-			display: previous || ''
-		});
+		if (element.previousDisplay) {
+			style(element, {
+				display: element.previousDisplay
+			});
+		} else {
+			element.style.display = '';
+		}
 	}
 };
 
 const hide = element => {
-	if (element) {
+	if (element && style(element, 'display') !== 'none') {
 		element.previousDisplay = style(element, 'display') || null;
-		style(element, {
-			display: 'none'
-		});
+		element.style.display = 'none';
 	}
 };
 
