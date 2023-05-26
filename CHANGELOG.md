@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.6](https://github.com/marcospont/agnostic-draggable/compare/v1.4.5...v1.4.6) (2023-05-26)
+
+
+### Bug Fixes
+
+* show/hide helpers were not working properly in some scenarios ([601d040](https://github.com/marcospont/agnostic-draggable/commit/601d0405b080b26a082eca9cc389c8e984846676))
+
 ### [1.4.5](https://github.com/marcospont/agnostic-draggable/compare/v1.4.4...v1.4.5) (2022-04-09)
 
 ### [1.4.4](https://github.com/marcospont/agnostic-draggable/compare/v1.4.3...v1.4.4) (2022-04-09)
