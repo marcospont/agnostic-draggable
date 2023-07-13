@@ -130,7 +130,7 @@ export default class MouseSensor extends Sensor {
 				})
 			);
 		}
-		document.removeEventListener('contextmenu', preventDefault);
+		document.removeEventListener('contextmenu', preventDefault, true);
 		document.removeEventListener('mousemove', this.onMouseMove);
 		event.preventDefault();
 	};
