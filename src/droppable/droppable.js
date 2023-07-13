@@ -43,6 +43,8 @@ export default class Droppable {
 
 	offset = null;
 
+	canUse = false;
+
 	constructor(element, options = {}, listeners = {}) {
 		if (element instanceof HTMLElement) {
 			this.element = element;
@@ -182,6 +184,7 @@ export default class Droppable {
 
 	activate(event) {
 		const draggable = DragDropManager.draggable;
+		this.canUse = true;
 
 		addClass(this.element, this.activeClass);
 		if (draggable) {
@@ -198,7 +201,7 @@ export default class Droppable {
 	over(event) {
 		const draggable = DragDropManager.draggable;
 
-		if (draggable && (draggable.currentItem || draggable.element) !== this.element && this.accept(draggable)) {
+		if (draggable && (draggable.currentItem || draggable.element) !== this.element && this.canUse) {
 			addClass(this.element, this.hoverClass);
 			this.isOver = true;
 			this.trigger(
@@ -226,7 +229,7 @@ export default class Droppable {
 					droppable.greedy &&
 					droppable.scope === draggable.scope &&
 					droppable.intersect(draggable, event) &&
-					droppable.accept(draggable)
+					droppable.canUse
 				) {
 					childIntersection = true;
 				}
@@ -236,7 +239,8 @@ export default class Droppable {
 				return null;
 			}
 
-			if (this.accept(draggable)) {
+			if (this.canUse) {
+				this.canUse = false;
 				removeClass(this.element, this.activeClass);
 				removeClass(this.element, this.hoverClass);
 				this.isOver = false;
@@ -257,7 +261,7 @@ export default class Droppable {
 	out(event) {
 		const draggable = DragDropManager.draggable;
 
-		if (draggable && (draggable.currentItem || draggable.element) !== this.element && this.accept(draggable)) {
+		if (draggable && (draggable.currentItem || draggable.element) !== this.element && this.canUse) {
 			removeClass(this.element, this.hoverClass);
 			this.isOver = false;
 			this.trigger(
@@ -271,6 +275,7 @@ export default class Droppable {
 	}
 
 	deactivate(event) {
+		this.canUse = false;
 		const draggable = DragDropManager.draggable;
 
 		removeClass(this.element, this.activeClass);

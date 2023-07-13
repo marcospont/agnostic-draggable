@@ -38,7 +38,11 @@ export class DragDropManager {
 						droppable.activate(event);
 					}
 					droppable.refreshProportions();
+				} else {
+					droppable.deactivate(event);
 				}
+			} else {
+				droppable.deactivate(event);
 			}
 		});
 	};
