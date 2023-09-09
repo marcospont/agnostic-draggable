@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/marcospont/agnostic-draggable/compare/v1.5.0...v1.5.1) (2023-09-09)
+
 ## [1.5.0](https://github.com/marcospont/agnostic-draggable/compare/v1.4.6...v1.5.0) (2023-09-09)
 
 
