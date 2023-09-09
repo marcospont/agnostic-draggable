@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/marcospont/agnostic-draggable/compare/v1.4.6...v1.5.0) (2023-09-09)
+
+
+### Features
+
+* added a 'setOption' method on draggable, droppable, sortable and resizable widgets to allow dynamic overriding of component options ([c20a471](https://github.com/marcospont/agnostic-draggable/commit/c20a4715a97f89376f8f02e7bed55afebc13db64))
+
+
+### Bug Fixes
+
+* contextmenu event was not being properly removed ([7b5ff98](https://github.com/marcospont/agnostic-draggable/commit/7b5ff98f5d37c19640d1bf7f9b104f0f6465210c))
+
 ### [1.4.6](https://github.com/marcospont/agnostic-draggable/compare/v1.4.5...v1.4.6) (2023-05-26)
 
 
