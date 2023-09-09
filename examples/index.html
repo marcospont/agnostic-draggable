@@ -39,6 +39,7 @@
 			}
 
 			.droppable {
+				position: relative;
 				display: block;
 				border: 1px solid #000;
 				background-color: #374151;
@@ -47,13 +48,28 @@
 				margin-bottom: 30px;
 				padding: 20px;
 				width: calc(100% - 40px);
-				height: 80px;
+				min-height: 80px;
+			}
+			.droppable:before {
+				content: "I am a droppable!";
+				position: absolute;
+				left: 10px;
+				top: 10px;
 			}
 			.droppable.ui-droppable-active {
-				border-color: blue;
+				background-color: #4338ca;
+			}
+			.droppable.ui-droppable-active:before {
+				content: "Droppable is active!";
 			}
 			.droppable.ui-droppable-hover {
-				border-color: red;
+				background-color: red;
+			}
+			.droppable.ui-droppable-hover:before {
+				content: "Droppable is hovered!";
+			}
+			.droppable.dropped:before {
+				content: "I was dropped!";
 			}
 
 			.column {
@@ -124,7 +140,7 @@
 				<div id="drag5" class="draggable">
 					<span class="handle">Drag Me!</span>
 				</div>
-				<div id="drop1" class="droppable">Drop Here!</div>
+				<div id="drop1" class="droppable"></div>
 				<div class="column">
 					<ul id="sort1" class="sortable">
 						<li>
@@ -176,10 +192,14 @@
 		</div>
 		<script type="text/javascript" src="../dist/agnostic-draggable.js"></script>
 		<script type="text/javascript">
+			const draggables = {};
+			const droppables = {};
+			const sortables = {};
+			const resizables = {};
+
 			document.querySelectorAll('.draggable').forEach(function (element) {
-				new agnosticDraggable.Draggable(element, {
+				draggables[element.id] = new agnosticDraggable.Draggable(element, {
 					appendTo: 'body',
-					connectToSortable: '.sortable',
 					containment: 'parent',
 					cursor: 'move',
 					distance: 10,
@@ -188,9 +208,16 @@
 					stack: '.draggable'
 				});
 			});
-			new agnosticDraggable.Droppable(document.querySelector('.droppable'));
+			document.querySelectorAll('.droppable').forEach(function (element) {
+				droppables[element.id] = new agnosticDraggable.Droppable(element, {
+					greedy: true
+				}, {
+					'droppable:activate': function(evt) { evt.droppable.element.classList.remove('dropped'); },
+					'droppable:drop': function(evt) { evt.droppable.element.classList.add('dropped'); }
+				});
+			});
 			document.querySelectorAll('.sortable').forEach(function (element) {
-				new agnosticDraggable.Sortable(element, {
+				sortables[element.id] = new agnosticDraggable.Sortable(element, {
 					connectWith: '.sortable',
 					cursor: 'move',
 					helper: 'clone',
@@ -201,7 +228,7 @@
 				});
 			});
 			document.querySelectorAll('.resizable').forEach(function (element) {
-				new agnosticDraggable.Resizable(element, {
+				resizables[element.id] = new agnosticDraggable.Resizable(element, {
 					autoHide: true,
 					distance: 10,
 					containment: 'parent',

@@ -78,9 +78,6 @@ export default class ResizeContainmentConstraint extends Plugin {
 			containmentPosition = containmentOffset;
 		}
 
-		// console.log(currentSize);
-		// console.log(currentPosition);
-
 		if (currentPosition.left < 0) {
 			size.width += currentPosition.left;
 			if (aspectRatio) {

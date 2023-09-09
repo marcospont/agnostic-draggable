@@ -68,8 +68,8 @@ export default class Draggable {
 		scroll: true,
 		scrollSensitivity: 20,
 		scrollSpeed: 10,
-		stack: null,
 		skip: 'input, textarea, button, select, option',
+		stack: null,
 		zIndex: null
 	};
 
@@ -158,7 +158,38 @@ export default class Draggable {
 	}
 
 	setDisabled(value) {
-		this.options.disabled = !!value;
+		this.setOption('disabled', !!value);
+	}
+
+	setOption(opt, value) {
+		switch (opt) {
+			case 'appendTo':
+			case 'axis':
+			case 'connectToSortable':
+			case 'cursor':
+			case 'disabled':
+			case 'distance':
+			case 'grid':
+			case 'helper':
+			case 'opacity':
+			case 'revert':
+			case 'revertDuration':
+			case 'scope':
+			case 'scroll':
+			case 'scrollSensitivity':
+			case 'scrollSpeed':
+			case 'skip':
+			case 'stack':
+			case 'zIndex':
+				this.options[opt] = value;
+				break;
+			case 'containment':
+				this.options.containment = value;
+				this.containmentCoords = undefined;
+				break;
+			default:
+				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+		}
 	}
 
 	on(type, callback) {
@@ -256,7 +287,7 @@ export default class Draggable {
 		document.addEventListener('mouse:move', this.onDragMove);
 		document.addEventListener('mouse:stop', this.onDragStop);
 
-		if (this.options.helper === 'original') {
+		if (this.options.helper !== 'clone' && !isFunction(this.options.helper)) {
 			setPositionRelative(this.element);
 		}
 

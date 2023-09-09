@@ -36,7 +36,6 @@ const wrappableElements = /^(canvas|textarea|input|select|button|img)$/i;
 
 export default class Resizable extends Draggable {
 	static defaultOptions = {
-		alsoResize: null,
 		animate: false,
 		animateDuration: 500,
 		aspectRatio: false,
@@ -93,6 +92,31 @@ export default class Resizable extends Draggable {
 	resizableElements = [];
 
 	listeners = [];
+
+	setOption(opt, value) {
+		switch (opt) {
+			case 'animate':
+			case 'animateDuration':
+			case 'aspectRatio':
+			case 'disabled':
+			case 'distance':
+			case 'ghost':
+			case 'grid':
+			case 'maxHeight':
+			case 'maxWidth':
+			case 'minHeight':
+			case 'minWidth':
+			case 'zIndex':
+				this.options[opt] = value;
+				break;
+			case 'containment':
+				this.options.containment = value;
+				this.containmentCoords = undefined;
+				break;
+			default:
+				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+		}
+	}
 
 	cancel() {
 		if (this.resizing) {

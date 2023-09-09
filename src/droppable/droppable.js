@@ -62,7 +62,27 @@ export default class Droppable {
 	}
 
 	setDisabled(value) {
-		this.options.disabled = !!value;
+		this.setOption('disabled', !!value);
+	}
+
+	setOption(opt, value) {
+		switch (opt) {
+			case 'accept':
+			case 'disabled':
+			case 'greedy':
+			case 'tolerance':
+				this.options[opt] = value;
+				break;
+			case 'scope':
+				if (value !== this.options.scope) {
+					DragDropManager.removeDroppable(this, this.options.scope);
+					this.options.scope = value;
+					DragDropManager.addDroppable(this, value);
+				}
+				break;
+			default:
+				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+		}
 	}
 
 	destroy() {
@@ -172,6 +192,9 @@ export default class Droppable {
 		}
 
 		if (draggable) {
+			if (accept === '*') {
+				return true;
+			}
 			return isFunction(accept)
 				? accept(draggable.currentItem || draggable.element)
 				: matches(draggable.currentItem || draggable.element, accept);

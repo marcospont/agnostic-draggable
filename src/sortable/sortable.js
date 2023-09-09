@@ -111,6 +111,42 @@ export default class Sortable extends Draggable {
 
 	rearrangeIteration = 0;
 
+	setOption(opt, value) {
+		switch (opt) {
+			case 'appendTo':
+			case 'axis':
+			case 'connectWith':
+			case 'cursor':
+			case 'disabled':
+			case 'distance':
+			case 'dropOnEmpty':
+			case 'forceHelperSize':
+			case 'forcePlaceholderSize':
+			case 'hidePlaceholder':
+			case 'grid':
+			case 'items':
+			case 'helper':
+			case 'opacity':
+			case 'revert':
+			case 'revertDuration':
+			case 'scope':
+			case 'scroll':
+			case 'scrollSensitivity':
+			case 'scrollSpeed':
+			case 'skip':
+			case 'tolerance':
+			case 'zIndex':
+				this.options[opt] = value;
+				break;
+			case 'containment':
+				this.options.containment = value;
+				this.containmentCoords = undefined;
+				break;
+			default:
+				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+		}
+	}
+
 	cancel() {
 		this.resetCurrentItem = true;
 		super.cancel();
