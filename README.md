@@ -57,10 +57,10 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 
 ### `appendTo`
 
-- **Type:** `String`
-- **Default:** `parent`
-- **Accepted values:** `parent` or a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `parent`
+-   **Accepted values:** `parent` or a CSS selector
+-   **Modifiable at runtime:** yes
 
 Which element the dragging helper should be appended to while dragging.
 Only works when the [`helper`](#helper) option is set to not use the original element.
@@ -79,10 +79,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `axis`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** `x` or `y`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** `x` or `y`
+-   **Modifiable at runtime:** yes
 
 Constrains dragging to either the horizontal (x) or vertical (y) axis.
 
@@ -100,10 +100,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `connectToSortable`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** yes
 
 Allows the Draggable to be dropped onto the specified Sortables. If this option is used, a Draggable can be dropped onto a Sortable list and then becomes part of it. Note: The `helper` option must be set to `clone` in order to work flawlessly.
 
@@ -129,10 +129,10 @@ new Sortable(document.querySelector('#sort1'));
 
 ### `containment`
 
-- **Type:** `String,Array`
-- **Default:** null
-- **Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Array`
+-   **Default:** null
+-   **Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
+-   **Modifiable at runtime:** yes
 
 Constrains dragging to within the bounds of the specified element or region.
 
@@ -154,10 +154,10 @@ new Draggable(document.querySelector('#drag2'), {
 
 ### `cursor`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** any values accepted by the `cursor` CSS property
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** any values accepted by the `cursor` CSS property
+-   **Modifiable at runtime:** yes
 
 Allows changing the cursor style while dragging the element.
 
@@ -175,9 +175,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `disabled`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Determines whether the Draggable instance should be disabled.
 
@@ -195,9 +195,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `distance`
 
-- **Type:** `Number`
-- **Default:** `0`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `0`
+-   **Modifiable at runtime:** yes
 
 Distance in pixels that the mouse should move before the dragging should start. Prevents unwanted drags when the Draggable element is clicked.
 
@@ -215,10 +215,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `grid`
 
-- **Type:** `Array`
-- **Default:** null
-- **Accepted values:** an array of 2 numbers in the form `[x, y]`
-- **Modifiable at runtime:** yes
+-   **Type:** `Array`
+-   **Default:** null
+-   **Accepted values:** an array of 2 numbers in the form `[x, y]`
+-   **Modifiable at runtime:** yes
 
 Snaps the dragging helper to a grid, every x and y pixels.
 
@@ -236,10 +236,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `handle`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** no
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** no
 
 If specified, restricts dragging from starting unless the mousedown occurs on the specified element(s). Only elements that descend from the Draggable element are permitted.
 
@@ -259,10 +259,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `helper`
 
-- **Type:** `String,Function`
-- **Default:** `original`
-- **Accepted values:** `original`, `clone` or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Function`
+-   **Default:** `original`
+-   **Accepted values:** `original`, `clone` or a function
+-   **Modifiable at runtime:** yes
 
 Allows for a helper element to be used for dragging display.
 If set to `clone`, then the element will be cloned and the clone will be dragged.
@@ -281,9 +281,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `opacity`
 
-- **Type:** `Number`
-- **Default:** null
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
 
 Allows changing the opacity of the element while being dragged.
 
@@ -301,10 +301,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `revert`
 
-- **Type:** `Boolean,String,Function`
-- **Default:** `false`
-- **Accepted values:** `invalid`, `valid`, `true`, `false` or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean,String,Function`
+-   **Default:** `false`
+-   **Accepted values:** `invalid`, `valid`, `true`, `false` or a function
+-   **Modifiable at runtime:** yes
 
 Whether the element should revert to its start position when dragging stops.
 If set to `true`, the element will always revert.
@@ -325,9 +325,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `revertDuration`
 
-- **Type:** `Number`
-- **Default:** `200`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `200`
+-   **Modifiable at runtime:** yes
 
 Uses an animation with this specific duration in milliseconds when reverting the element.
 
@@ -346,9 +346,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scope`
 
-- **Type:** `String`
-- **Default:** `default`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `default`
+-   **Modifiable at runtime:** yes
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to Droppable's [`accept`](#accept) option. A Draggable with the same scope value as a Droppable will be accepted by it.
 
@@ -366,9 +366,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scroll`
 
-- **Type:** `Boolean`
-- **Default:** `true`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `true`
+-   **Modifiable at runtime:** yes
 
 If this option is set to `true`, the container of the element will auto-scroll if needed.
 
@@ -386,9 +386,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scrollSensitivity`
 
-- **Type:** `Number`
-- **Default:** `20`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `20`
+-   **Modifiable at runtime:** yes
 
 Determines how close to the edge of the viewport the auto-scroll should happen. Distance is relative to the mouse pointer, not to the dragging element.
 
@@ -409,9 +409,9 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `scrollSpeed`
 
-- **Type:** `Number`
-- **Default:** `10`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `10`
+-   **Modifiable at runtime:** yes
 
 The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollsensitivity) is met.
 
@@ -432,10 +432,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `skip`
 
-- **Type:** `String`
-- **Default:** `input, textarea, button, select, option`
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `input, textarea, button, select, option`
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** yes
 
 Prevents dragging if the clicked element matches the given CSS selector.
 
@@ -456,10 +456,10 @@ new Draggable(document.querySelector('#drag1'), {
 
 ### `stack`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** yes
 
 Manages the z-indexes of Draggable elements matching the given CSS selector.
 Brings the currently dragged element to the front compared with other members of the stack.
@@ -482,9 +482,9 @@ new Draggable(document.querySelector('#drag2'), {
 
 ### `zIndex`
 
-- **Type:** `Number`
-- **Default:** null
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
 
 Allows to change the z-index of the element when being dragged.
 
@@ -504,45 +504,44 @@ new Draggable(document.querySelector('#drag1'), {
 
 |          Name           |                                     Description                                     |
 | :---------------------: | :---------------------------------------------------------------------------------: |
-|  **`draggable:init`**   | Called when the Draggable is initialized.                      |
-|    **`drag:start`**     | Called when the drag operation is started. Can be canceled.             |
-|     **`drag:move`**     | Called while dragging the element. Can be canceled.                 |
+|  **`draggable:init`**   |                      Called when the Draggable is initialized.                      |
+|    **`drag:start`**     |             Called when the drag operation is started. Can be canceled.             |
+|     **`drag:move`**     |                 Called while dragging the element. Can be canceled.                 |
 |     **`drag:stop`**     | Called when the drag operation stops. Can be canceled, preventing an unwanted drop. |
-| **`draggable:destroy`** | Called when the Draggable is destroyed.                       |
-
+| **`draggable:destroy`** |                       Called when the Draggable is destroyed.                       |
 
 ### Event Arguments
 
 ### `draggable:init`
 
-**draggable:** The draggable being initialized
+-   **draggable:** The draggable being initialized
 
 ### `drag:start`
 
-**source:** The element being dragged
-**helper:** The helper element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
+-   **source:** The element being dragged
+-   **helper:** The helper element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
 
 ### `drag:move`
 
-**source:** The element being dragged
-**helper:** The helper element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
-**position:** The current mouse position
+-   **source:** The element being dragged
+-   **helper:** The helper element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+-   **position:** The current mouse position
 
 ### `drag:stop`
 
-**source:** The element being dragged
-**helper:** The helper element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
-**droppable:** The droppable where the element was dropped
+-   **source:** The element being dragged
+-   **helper:** The helper element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+-   **droppable:** The droppable where the element was dropped
 
 ### `draggable:destroy`
 
-**draggable** The draggable being destroyed
+-   **draggable** The draggable being destroyed
 
 ### Cancelling an event
 
@@ -584,10 +583,10 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 
 ### `accept`
 
-- **Type:** `String,Function`
-- **Default:** `*`
-- **Accepted values:** a CSS selector or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Function`
+-   **Default:** `*`
+-   **Accepted values:** a CSS selector or a function
+-   **Modifiable at runtime:** yes
 
 Controls which Draggable elements can be accepted by this Droppable.
 It can be a CSS selector that needs to match the accepted Draggables or a function that receives each dragging element and returns true if the element is accepted.
@@ -608,9 +607,9 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `disabled`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Allows disabling the Droppable if set to `true`.
 
@@ -630,9 +629,9 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `greedy`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 By default, when an element is dropped on nested Droppables, each Droppable will receive the element. However, by setting this option to `true` on a child Droppable, any parent Droppables won't receive the element.
 
@@ -659,9 +658,9 @@ new Droppable(document.querySelector('#drop2'), {
 
 ### `scope`
 
-- **Type:** `String`
-- **Default:** `default`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `default`
+-   **Modifiable at runtime:** yes
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to the [`accept`](#accept) option. A Droppable will only accept a Draggable of the same scope.
 
@@ -683,10 +682,10 @@ new Droppable(document.querySelector('#drop1'), {
 
 ### `tolerance`
 
-- **Type:** `String`
-- **Default:** `intersect`
-- **Accepted values:** `fit`, `intersect`, `pointer` or `touch`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `intersect`
+-   **Accepted values:** `fit`, `intersect`, `pointer` or `touch`
+-   **Modifiable at runtime:** yes
 
 Specifies which mode to use for testing whether a Draggable is hovering over a Droppable.
 The `fit` option requires the dragging element to overlap the droppable area entirely.
@@ -718,48 +717,47 @@ new Droppable(document.querySelector('#drop1'), {
 |    **`droppable:drop`**    |    Called when a Draggable or Sortable item is dropped into the Droppable.     |
 |    **`droppable:out`**     | Called when a Draggable or Sortable item is dragged out of the Droppable area. |
 | **`droppable:deactivate`** |  Called when drag stops on a Draggable or Sortable accepted by the Droppable.  |
-|   **`draggable:destroy`**   |                    Called when the Droppable is destroyed.                     |
+|  **`draggable:destroy`**   |                    Called when the Droppable is destroyed.                     |
 
 ### Event Arguments
 
 ### `droppable:init`
 
-**droppable:** The droppable being initialized
+-   **droppable:** The droppable being initialized
 
 ### `droppable:activate`
 
-**droppable:** The droppable being activated
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the activation
+-   **droppable:** The droppable being activated
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the activation
 
 ### `droppable:over`
 
-**droppable:** The droppable being hovered over
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
+-   **droppable:** The droppable being hovered over
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
 
 ### `droppable:drop`
 
-**droppable:** The droppable where the element is being dropped
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
+-   **droppable:** The droppable where the element is being dropped
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
 
 ### `droppable:out`
 
-**droppable:** The droppable being hovered out
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
+-   **droppable:** The droppable being hovered out
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
 
 ### `droppable:deactivate`
 
-**droppable:** The droppable being deactivated
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the activation
+-   **droppable:** The droppable being deactivated
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the activation
 
 ### `droppable:destroy`
 
-**droppable:** The droppable being destroyed
-
+-   **droppable:** The droppable being destroyed
 
 ---
 
@@ -808,10 +806,10 @@ Elements modified or created will use the same CSS classes inherited from jQuery
 
 ### `appendTo`
 
-- **Type:** `String`
-- **Default:** `parent`
-- **Accepted values:** `parent` or a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `parent`
+-   **Accepted values:** `parent` or a CSS selector
+-   **Modifiable at runtime:** yes
 
 Which element the sorting helper should be appended to while sorting.
 Only works when the [`helper`](#helper-1) option is set to not use the original element.
@@ -833,10 +831,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `axis`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** `x` or `y`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** `x` or `y`
+-   **Modifiable at runtime:** yes
 
 Constrains sorting to either the horizontal (x) or vertical (y) axis.
 
@@ -857,10 +855,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `connectWith`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** yes
 
 A selector of other Sortable elements that the items from this list should be connected to. This is a one-way relationship, if you want the items to be connected in both directions, the `connectWith` option must be set on both Sortable elements.
 
@@ -887,10 +885,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `containment`
 
-- **Type:** `String,Array`
-- **Default:** null
-- **Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Array`
+-   **Default:** null
+-   **Accepted values:** `parent`, `document`, `window`, a CSS selector or an array of 4 numbers in the form `[x1, y1, x2, y2]`
+-   **Modifiable at runtime:** yes
 
 Constrains sorting to within the bounds of the specified element or region.
 
@@ -911,10 +909,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `cursor`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** any values accepted by the `cursor` CSS property
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** any values accepted by the `cursor` CSS property
+-   **Modifiable at runtime:** yes
 
 Allows changing the cursor style while sorting items.
 
@@ -935,9 +933,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `disabled`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Determines whether the Sortable instance should be disabled.
 
@@ -958,9 +956,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `distance`
 
-- **Type:** `Number`
-- **Default:** `0`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `0`
+-   **Modifiable at runtime:** yes
 
 Distance in pixels that the mouse should move before the sorting should start. Prevents unwanted sorts when sortable items are clicked.
 
@@ -981,9 +979,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `dropOnEmpty`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 If `false`, items from this Sortable can't be dropped on an empty connected Sortable (see the [`connectWith`](#connectwith) option.
 
@@ -1009,9 +1007,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `forceHelperSize`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Whether to force the sorting helper to have a size.
 
@@ -1032,9 +1030,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `forcePlaceholderSize`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Whether to force the sorting placeholder to have a size.
 
@@ -1055,9 +1053,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `hidePlaceholder`
 
-- **Type:** `Boolean`
-- **Default:** `false`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
 
 Whether to set the visibility of the placeholder to hidden.
 
@@ -1078,10 +1076,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `grid`
 
-- **Type:** `Array`
-- **Default:** null
-- **Accepted values:** an array of 2 numbers in the form `[x, y]`
-- **Modifiable at runtime:** yes
+-   **Type:** `Array`
+-   **Default:** null
+-   **Accepted values:** an array of 2 numbers in the form `[x, y]`
+-   **Modifiable at runtime:** yes
 
 Snaps the sorting helper to a grid, every x and y pixels.
 
@@ -1102,10 +1100,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `handle`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** no
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** no
 
 If specified, restricts sorting from starting unless the mousedown occurs on the specified element(s). Only elements that descend from the sortable items are permitted.
 
@@ -1130,10 +1128,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `helper`
 
-- **Type:** `String,Function`
-- **Default:** `original`
-- **Accepted values:** `original`, `clone` or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Function`
+-   **Default:** `original`
+-   **Accepted values:** `original`, `clone` or a function
+-   **Modifiable at runtime:** yes
 
 Allows for a helper element to be used for sorting display.
 If set to `clone`, then the item being sorted will be cloned and the clone will be dragged.
@@ -1155,10 +1153,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `items`
 
-- **Type:** `String,Function`
-- **Default:** null
-- **Accepted values:** a CSS selector or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `String,Function`
+-   **Default:** null
+-   **Accepted values:** a CSS selector or a function
+-   **Modifiable at runtime:** yes
 
 Specifies how to find the sortable items. It can be provided as a CSS selector or a function returning an array of sortable nodes
 
@@ -1181,9 +1179,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `opacity`
 
-- **Type:** `Number`
-- **Default:** null
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
 
 Allows changing the opacity of the items while being sorted.
 
@@ -1204,10 +1202,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `revert`
 
-- **Type:** `Boolean,String,Function`
-- **Default:** `false`
-- **Accepted values:** `invalid`, `valid`, `true`, `false` or a function
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean,String,Function`
+-   **Default:** `false`
+-   **Accepted values:** `invalid`, `valid`, `true`, `false` or a function
+-   **Modifiable at runtime:** yes
 
 Whether the sortable item should revert to its start position when sorting stops.
 If set to `true`, the sortable item will always revert.
@@ -1231,9 +1229,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `revertDuration`
 
-- **Type:** `Number`
-- **Default:** `200`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `200`
+-   **Modifiable at runtime:** yes
 
 Uses an animation with this specific duration in milliseconds when reverting the items.
 
@@ -1255,9 +1253,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scope`
 
-- **Type:** `String`
-- **Default:** `default`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `default`
+-   **Modifiable at runtime:** yes
 
 Used to group sets of Draggable, Droppable and Sortable elements, in addition to Droppable's [`accept`](#accept) option. A Sortable with the same scope value as a Droppable will be accepted by it.
 
@@ -1278,9 +1276,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scroll`
 
-- **Type:** `Boolean`
-- **Default:** `true`
-- **Modifiable at runtime:** yes
+-   **Type:** `Boolean`
+-   **Default:** `true`
+-   **Modifiable at runtime:** yes
 
 If this option is set to `true`, the container of the element will auto-scroll if needed.
 
@@ -1301,9 +1299,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scrollSensitivity`
 
-- **Type:** `Number`
-- **Default:** `20`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `20`
+-   **Modifiable at runtime:** yes
 
 Determines how close to the edge of the viewport the auto-scroll should happen. Distance is realtive to the mouse pointer, not to the sorting item.
 
@@ -1327,9 +1325,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `scrollSpeed`
 
-- **Type:** `Number`
-- **Default:** `10`
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** `10`
+-   **Modifiable at runtime:** yes
 
 The speed in pixels at which the container should auto-scroll when the distance in [`scrollSensitivity`](#scrollsensitivity-1) is met.
 
@@ -1353,10 +1351,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `skip`
 
-- **Type:** `String`
-- **Default:** `input, textarea, button, select, option`
-- **Accepted values:** a CSS selector
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** `input, textarea, button, select, option`
+-   **Accepted values:** a CSS selector
+-   **Modifiable at runtime:** yes
 
 Prevents sorting if the clicked element matches the given CSS selector.
 
@@ -1383,10 +1381,10 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `tolerance`
 
-- **Type:** `String`
-- **Default:** null
-- **Accepted values:** `intersect` or `pointer`
-- **Modifiable at runtime:** yes
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** `intersect` or `pointer`
+-   **Modifiable at runtime:** yes
 
 Specifies which mode to use for testing whether the item being moved is hovering over another item.
 
@@ -1407,9 +1405,9 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `zIndex`
 
-- **Type:** `Number`
-- **Default:** null
-- **Modifiable at runtime:** yes
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
 
 Allows to change the z-index of the item when being sorted.
 
@@ -1450,99 +1448,525 @@ new Sortable(document.querySelector('#sort1'), {
 
 ### `sortable:init`
 
-**sortable:** The sortable being initialized
+-   **sortable:** The sortable being initialized
 
 ### `sortable:activate`
 
-**sortable:** The sortable being activated
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
-**peerSortable:** The connected sortable that originated the event
+-   **sortable:** The sortable being activated
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
+-   **peerSortable:** The connected sortable that originated the event
 
 ### `sort:start`
 
-**source:** The element being sorted
-**helper:** The helper element
-**placeholder:** The placeholder element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
+-   **source:** The element being sorted
+-   **helper:** The helper element
+-   **placeholder:** The placeholder element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
 
 ### `sort:move`
 
-**source:** The element being sorted
-**helper:** The helper element
-**placeholder:** The placeholder element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
-**position:** The current mouse position
+-   **source:** The element being sorted
+-   **helper:** The helper element
+-   **placeholder:** The placeholder element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+-   **position:** The current mouse position
 
 ### `sort:start`
 
-**source:** The element being sorted
-**helper:** The helper element
-**placeholder:** The placeholder element
-**sensorEvent:** The sensor event
-**originalEvent:** The original mouse event
-**droppable:** The droppable where the sorting element was dropped
+-   **source:** The element being sorted
+-   **helper:** The helper element
+-   **placeholder:** The placeholder element
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+-   **droppable:** The droppable where the sorting element was dropped
 
 ### `sortable:over`
 
-**sortable:** The sortable being hovered over
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
-**peerSortable:** The connected sortable that originated the event
+-   **sortable:** The sortable being hovered over
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
+-   **peerSortable:** The connected sortable that originated the event
 
 ### `sortable:change`
 
-**sortable:** The sortable being changed
+-   **sortable:** The sortable being changed
 
 ### `sortable:remove`
 
-**sortable:** The sortable from where the item was removed
-**item:** The item being removed
-**previousIndex:** The item index in the source sortable
-**peerSortable:** The connected sortable that is receiving the item
+-   **sortable:** The sortable from where the item was removed
+-   **item:** The item being removed
+-   **previousIndex:** The item index in the source sortable
+-   **peerSortable:** The connected sortable that is receiving the item
 
 ### `sortable:receive`
 
-**sortable:** The sortable receiving the item
-**item:** The item being received
-**newIndex:** The item index in the target sortable
-**draggable:** The draggable that was the previous owned of the item
-**peerSortable:** The connected sortable that was the previous owner of the item
+-   **sortable:** The sortable receiving the item
+-   **item:** The item being received
+-   **newIndex:** The item index in the target sortable
+-   **draggable:** The draggable that was the previous owned of the item
+-   **peerSortable:** The connected sortable that was the previous owner of the item
 
 ### `sortable:update`
 
-**sortable:** The sortable updated
-**item:** The item that was moved
-**previousIndex:** The previous item index
-**newIndex:** The new item index
-**peerSortable:** The connected sortable that was the previous owner of the item
+-   **sortable:** The sortable updated
+-   **item:** The item that was moved
+-   **previousIndex:** The previous item index
+-   **newIndex:** The new item index
+-   **peerSortable:** The connected sortable that was the previous owner of the item
 
 ### `sortable:out`
 
-**sortable:** The sortable being hovered out
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
-**peerSortable:** The connected sortable that originated the event
+-   **sortable:** The sortable being hovered out
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
+-   **peerSortable:** The connected sortable that originated the event
 
 ### `sortable:deactivate`
 
-**sortable:** The sortable being deactivated
-**sensorEvent:** The sensor event
-**draggable:** The draggable that originated the event
-**peerSortable:** The connected sortable that originated the event
+-   **sortable:** The sortable being deactivated
+-   **sensorEvent:** The sensor event
+-   **draggable:** The draggable that originated the event
+-   **peerSortable:** The connected sortable that originated the event
 
 ### `sortable:destroy`
 
-**sortable:** The sortable being destroyed
+-   **sortable:** The sortable being destroyed
 
 ---
+
+## Resizable
+
+Enables resizing functionality on any DOM element. Creates handles on specific areas of the resizable elements that allow them to be resized using the mouse.
+
+Elements modified or created will use the same CSS classes inherited from jQuery UI's implementation:
+
+-   ui-resizable: the element being resized
+-   ui-resizable-handle: the handles of a resizable element
+-   ui-resizable-n: resize handle added on the upper area of a resizable element
+-   ui-resizable-s: resize handle added on the lower area of a resizable element
+-   ui-resizable-e: resize handle added on the right area of a resizable element
+-   ui-resizable-w: resize handle added on the left area of a resizable element
+-   ui-resizable-ne: resize handle added on the upper/right corner of a resizable element
+-   ui-resizable-nw: resize handle added on the upper/left corner of a resizable element
+-   ui-resizable-se: resize handle added on the lower/right corner of a resizable element
+-   ui-resizable-nw: resize handle added on the lower/left corner of a resizable element
+-   ui-resizable-ghost: the ghost element added to preview the new size of an element being resized
+-   ui-resizable-helper: the resizing helper
+
+### Options
+
+|                   Name                    |    Type     | Default  |                                  Description                                   |
+| :---------------------------------------: | :---------: | :------: | :----------------------------------------------------------------------------: |
+|         **[`animate`](#animate)**         | `{Boolean}` | `false`  |            Where to animate the size change on a resizable element.            |
+| **[`animateDuration`](#animateduration)** | `{Number}`  |  `500`   |                   Resize animation duration in milliseconds.                   |
+|     **[`aspectRatio`](#aspectratio)**     | `{Boolean}` | `false`  |          Where to keep the aspect ratio of the element when resizing.          |
+|        **[`autoHide`](#autohide)**        | `{Boolean}` | `false`  | Where to auto hide the resize handles when hovering out the resizable element. |
+|    **[`containment`](#containment-2)**    | `{String}`  |   null   |             Constraints resizing movement to an element or region.             |
+|       **[`disabled`](#disabled-3)**       | `{Boolean}` | `false`  |                    Allows disabling the resizing behaviour.                    |
+|       **[`distance`](#distance-2)**       | `{Number}`  |   `0`    |                 Distance in pixels before resizing can start.                  |
+|            **[`flex`](#flex)**            | `{Boolean}` | `false`  |       Apply new width to elements using `flexBasis` instead of `width`.        |
+|           **[`ghost`](#ghost)**           | `{Boolean}` | `false`  |    Whether to use a ghost element to represent the new size while resizing.    |
+|           **[`grid`](#grid-2)**           |  `{Array}`  |   null   |          Snaps the resizing behavior to a grid, every x and y pixels.          |
+|         **[`handles`](#handles)**         | `{String}`  | `e,s,se` |                   Indicates which resize handles to create.                    |
+|       **[`maxHeight`](#maxheight)**       | `{Number}`  |   null   |                             Maximum resize height.                             |
+|        **[`maxWidth`](#maxwidth)**        | `{Number}`  |   null   |                             Maximum resize width.                              |
+|       **[`minHeight`](#minheight)**       | `{Number}`  |   null   |                             Minimum resize height.                             |
+|        **[`minWidth`](#minwidth)**        | `{Number}`  |   null   |                             Minimum resize width.                              |
+|         **[`zIndex`](#zindex-2)**         | `{Number}`  |   null   |                  Allows changing the z-index while resizing.                   |
+
+### `animate`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
+
+Whether to animate the size change of resizable elements when the resize operation stops.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	animate: true
+});
+```
+
+### `animateDuration`
+
+-   **Type:** `Number`
+-   **Default:** `500`
+-   **Modifiable at runtime:** yes
+
+Determines the amount of time in milliseconds to be used in the size change animation.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	animate: true,
+	animateDuration: 1000
+});
+```
+
+### `aspectRatio`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
+
+If set to `true`, changing the size of a resizable element will always preserve its aspect ratio.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	aspectRatio: true
+});
+```
+
+### `autoHide`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** no
+
+If set to `true`, the resize handles will only be visible when hovering over the resizable elements.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	autoHide: true
+});
+```
+
+### `containment`
+
+-   **Type:** `String`
+-   **Default:** null
+-   **Accepted values:** `parent`, `document` or a CSS selector
+-   **Modifiable at runtime:** yes
+
+Constrains resizing to within the bounds of the specified element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	containment: 'parent'
+});
+```
+
+### `disabled`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
+
+Determines whether the Resizable instance should be disabled.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	disabled: true
+});
+```
+
+### `distance`
+
+-   **Type:** `Number`
+-   **Default:** `0`
+-   **Modifiable at runtime:** yes
+
+Distance in pixels that the mouse should move before the resizing should start. Prevents unwanted resizes when resizable items are clicked.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	distance: 10
+});
+```
+
+### `flex`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** no
+
+If set to `true`, the resizable element is considered to be using flex-box and the width updates will be performed using the `flexBasis` style property.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	flex: true
+});
+```
+
+### `ghost`
+
+-   **Type:** `Boolean`
+-   **Default:** `false`
+-   **Modifiable at runtime:** yes
+
+Whether to create a ghost element to demonstrate the size change of a resizable element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	ghost: true
+});
+```
+
+### `grid`
+
+-   **Type:** `Array`
+-   **Default:** null
+-   **Accepted values:** an array of 2 numbers in the form `[x, y]`
+-   **Modifiable at runtime:** yes
+
+Snaps the resizing behavior to a grid, every x and y pixels.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	grid: [10, 10]
+});
+```
+
+### `handles`
+
+-   **Type:** `String`
+-   **Default:** `e,s,se`
+-   **Accepted values:** a list of handle identifiers
+-   **Modifiable at runtime:** no
+
+Specifies which resize handles should be created on the resizable element.
+The option value must be a comma separated list of handle identifiers: `n`, `s`, `e`, `w`, `ne`, `nw`, `se`, `sw`.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	handles: 'e,se'
+});
+```
+
+### `maxHeight`
+
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
+
+Determines the maximum height of a resizable element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	maxHeight: 1000
+});
+```
+
+### `maxWidth`
+
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
+
+Determines the maximum width of a resizable element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	maxWidth: 1000
+});
+```
+
+### `minHeight`
+
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
+
+Determines the minimum height of a resizable element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	minHeight: 100
+});
+```
+
+### `minWidth`
+
+-   **Type:** `Number`
+-   **Default:** null
+-   **Modifiable at runtime:** yes
+
+Determines the minimum width of a resizable element.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	minWidth: 100
+});
+```
+
+### `zIndex`
+
+-   **Type:** `Number`
+-   **Default:** `500`
+-   **Modifiable at runtime:** yes
+
+Allows to change the z-index of an element being resized.
+
+```html
+<div id="resize1">Resize Me</div>
+```
+
+```js
+import { Resizable } from 'agnostic-draggable';
+
+new Resizable(document.querySelector('#resize1'), {
+	zIndex: 10
+});
+```
+
+### Events
+
+|          Name           |                                      Description                                       |
+| :---------------------: | :------------------------------------------------------------------------------------: |
+|  **`resizable:init`**   |                       Called when the Resizable is initialized.                        |
+|   **`resize:start`**    |             Called when the resize operation is started. Can be canceled.              |
+|   **`resize:change`**   |                    Called while resizing an item. Can be canceled.                     |
+|    **`resize:stop`**    | Called when the resize operation stops. Can be canceled to prevent an unwanted resize. |
+| **`resizable:destroy`** |                        Called when the Resizable is destroyed.                         |
+
+### Event Arguments
+
+### `resizable:init`
+
+-   **resizable:** The resizable being initialized
+
+### `resize:start`
+
+-   **source:** The element to be resized
+-   **helper:** The helper element
+-   **originalElement:** The original element
+-   **originalSize:** The original element size
+-   **originalPosition:** The original element position
+-   **size:** The current element size
+-   **position:** The current element position
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+
+### `resize:change`
+
+-   **element:** The element being resized
+-   **helper:** The helper element
+-   **originalElement:** The original element
+-   **originalSize:** The original element size
+-   **originalPosition:** The original element position
+-   **size:** The current element size
+-   **position:** The current element position
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+
+### `resize:stop`
+
+-   **source:** The resized element
+-   **helper:** The helper element
+-   **originalElement:** The original element
+-   **originalSize:** The original element size
+-   **originalPosition:** The original element position
+-   **size:** The new element size
+-   **position:** The new element position
+-   **sensorEvent:** The sensor event
+-   **originalEvent:** The original mouse event
+
+### `resizable:destroy`
+
+-   **resizable** The resizable being destroyed
+
+---
+
 ## Contributing
 
-Feel free to submit pull requests.
-The most wanted help would be bringing the remaining features from jQuery UI's that were not translated to this library.
-However, other new features and fixes for any kind of defects are very welcome.
+Feel free to submit pull requests. The most wanted help would be bringing the remaining features from jQuery UI's that were not translated to this library.
+
+This library was ported from an old library, so it lacks support for mobile touch events. Anyone interested in implementing enhancements like this would be very welcome.
+
+Other new features or fixes for any kind of defects are also very welcome.
 
 ## License
 
