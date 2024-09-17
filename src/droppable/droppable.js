@@ -1,4 +1,3 @@
-/* global HTMLElement */
 import forEach from 'lodash/forEach';
 import isFunction from 'lodash/isFunction';
 import isPlainObject from 'lodash/isPlainObject';

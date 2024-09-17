@@ -1,4 +1,3 @@
-/* global MouseEvent */
 import { activeElement, attribute, contains, listen, matches, style } from 'dom-helpers';
 import { injectGlobal } from '@emotion/css';
 import forEach from 'lodash/forEach';

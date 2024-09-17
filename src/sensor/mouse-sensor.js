@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-return */
 import { closest } from 'dom-helpers';
 
 import Sensor from './sensor';

@@ -1,4 +1,3 @@
-/* global HTMLElement */
 import { style } from 'dom-helpers';
 import isUndefined from 'lodash/isUndefined';
 import Plugin from './plugin';
