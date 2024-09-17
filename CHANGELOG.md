@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/marcospont/agnostic-draggable/compare/v1.5.1...v1.6.0) (2024-09-17)
+
+
+### Features
+
+* dev tools upgrades: eslint, prettier, husky ([4701966](https://github.com/marcospont/agnostic-draggable/commit/47019660cac1698bf875e188f3dd4d59db84fc96))
+
+
+### Bug Fixes
+
+* fixed bad handling of 'revert' option for draggable/sortable ([b0cd9ba](https://github.com/marcospont/agnostic-draggable/commit/b0cd9bae5cb61cfc4ffa48caa0902b6cbed27a47))
+* remove global directives provided by 'globals' package ([ef8e3f2](https://github.com/marcospont/agnostic-draggable/commit/ef8e3f282896f8e5f369ee9083dcc42fe5faeed3))
+
 ### [1.5.1](https://github.com/marcospont/agnostic-draggable/compare/v1.5.0...v1.5.1) (2023-09-09)
 
 ## [1.5.0](https://github.com/marcospont/agnostic-draggable/compare/v1.4.6...v1.5.0) (2023-09-09)
