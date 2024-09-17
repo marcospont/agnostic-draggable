@@ -683,7 +683,7 @@ export default class Resizable extends Draggable {
 				: {
 						width: width(this.helper || this.element),
 						height: height(this.helper || this.element)
-				  };
+					};
 
 		this.resizableElements.forEach(el => {
 			const innerDimensions = getPaddingAndBorder(el);

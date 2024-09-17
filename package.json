@@ -1,7 +1,7 @@
 {
 	"name": "agnostic-draggable",
 	"version": "1.5.1",
-	"description": "An agnostic set of libraries implementing draggable, droppable and sortable behaviours inspired by the jQuery UI implementation",
+	"description": "An agnostic set of libraries implementing draggable, droppable and sortable behaviors inspired by the jQuery UI implementation",
 	"keywords": [
 		"draggable",
 		"droppable",
@@ -28,6 +28,7 @@
 		"name": "Marcos Pont",
 		"email": "marcos.pont@gmail.com"
 	},
+	"type": "module",
 	"main": "dist/agnostic-draggable.min.js",
 	"scripts": {
 		"build": "rollup -c",
@@ -36,39 +37,41 @@
 		"code:format": "prettier --write \"src/**/*.js\"",
 		"code:lint": "eslint \"src/**/*.js\"",
 		"code:fix": "eslint \"src/**/*.js\" --fix",
-		"prepare": "husky install"
+		"prepare": "husky"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.22.17",
-		"@babel/eslint-parser": "^7.22.15",
-		"@babel/preset-env": "^7.22.15",
-		"@rollup/plugin-babel": "^6.0.3",
-		"@rollup/plugin-commonjs": "^25.0.4",
-		"@rollup/plugin-node-resolve": "^15.2.1",
-		"@rollup/plugin-replace": "^5.0.2",
-		"@rollup/plugin-terser": "^0.4.3",
+		"@babel/core": "^7.25.2",
+		"@babel/eslint-parser": "^7.25.1",
+		"@babel/preset-env": "^7.25.4",
+		"@eslint/js": "^9.10.0",
+		"@rollup/plugin-babel": "^6.0.4",
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-replace": "^5.0.7",
+		"@rollup/plugin-terser": "^0.4.4",
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-array-includes": "^2.0.3",
-		"core-js": "3.10.1",
-		"eslint": "^8.49.0",
+		"core-js": "3.28.0",
+		"eslint": "^9.10.0",
 		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"husky": "^8.0.3",
+		"eslint-plugin-prettier": "^5.2.1",
+		"globals": "^15.9.0",
+		"husky": "^9.1.6",
 		"lint-staged": "^13.3.0",
 		"minimist": "^1.2.8",
-		"prettier": "^2.8.8",
-		"rollup": "^3.29.0",
+		"prettier": "^3.3.3",
+		"rollup": "^3.29.4",
 		"standard-version": "^9.5.0"
 	},
 	"dependencies": {
-		"@emotion/css": "^11.11.2",
-		"animejs": "^3.2.1",
+		"@emotion/css": "^11.13.0",
+		"animejs": "^3.2.2",
 		"dom-helpers": "^5.2.1",
 		"events": "^3.3.0",
 		"lodash": "^4.17.21"
 	},
 	"engines": {
-		"node": ">=12"
+		"node": ">=14"
 	},
 	"lint-staged": {
 		"*.js": [

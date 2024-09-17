@@ -1,5 +1,3 @@
-/* eslint-disable no-useless-return */
-/* global HTMLElement */
 import anime from 'animejs/lib/anime.es';
 import forEach from 'lodash/forEach';
 import isFunction from 'lodash/isFunction';
@@ -588,7 +586,7 @@ export default class Draggable {
 			? {
 					left: 0,
 					top: 0
-			  }
+				}
 			: offset(offsetParent);
 
 		if (cssPosition === 'absolute' && scrollParent !== document && contains(scrollParent, offsetParent)) {
