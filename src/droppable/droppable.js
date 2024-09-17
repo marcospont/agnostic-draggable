@@ -81,7 +81,7 @@ export default class Droppable {
 				}
 				break;
 			default:
-				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+				throw new Error(`The option ${opt} is invalid or can't be changed dynamically`);
 		}
 	}
 

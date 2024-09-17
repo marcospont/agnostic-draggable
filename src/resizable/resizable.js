@@ -114,7 +114,7 @@ export default class Resizable extends Draggable {
 				this.containmentCoords = undefined;
 				break;
 			default:
-				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+				throw new Error(`The option ${opt} is invalid or can't be changed dynamically`);
 		}
 	}
 

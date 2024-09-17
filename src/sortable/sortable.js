@@ -143,7 +143,7 @@ export default class Sortable extends Draggable {
 				this.containmentCoords = undefined;
 				break;
 			default:
-				throw new Error(`The option ${opt} is invalid or can't be changed dinamically`);
+				throw new Error(`The option ${opt} is invalid or can't be changed dynamically`);
 		}
 	}
 
@@ -435,7 +435,7 @@ export default class Sortable extends Draggable {
 			(revert === 'invalid' && !sortStop.droppable) ||
 			(revert === 'valid' && sortStop.droppable) ||
 			(isFunction(revert) && revert(this.currentItem, sortStop.droppable)) ||
-			revert
+			revert === true
 		) {
 			this.reverting = true;
 			anime({
